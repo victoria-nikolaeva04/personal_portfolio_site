@@ -84,11 +84,11 @@ export function Experience() {
               <h3 className="font-display mt-1 text-[22px] font-semibold">
                 {item.degree}
               </h3>
-              <p className="text-moss mt-1 font-medium">
-                {item.school}  · {item.graduation}            
               <p className="mt-1">
                 {experience.minorLabel}: {item.minor}
               </p>
+              <p className="text-moss mt-1 font-medium">
+                {item.school} · {item.graduation}
               </p>
               <p className="mt-2">{item.honors}</p>
               <p className="mt-4 text-sm font-medium">

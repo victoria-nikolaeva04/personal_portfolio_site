@@ -61,7 +61,6 @@ export type ContactLink = {
 
 export type SectionHeadings = {
   workAreas: string
-  about: string
   contact: string
 }
 
@@ -101,8 +100,18 @@ export type ProjectsCopy = {
   emptyMessage: string
 }
 
+export type AboutCopy = {
+  label: string
+  intro: string
+  hobbiesLabel: string
+  funFactLabel: string
+  notesHeading: string
+  notesLink: NavLink
+}
+
 export type SiteContent = {
   name: string
+  about: AboutCopy
   projectsCopy: ProjectsCopy
   experience: ExperienceCopy
   hero: Hero
@@ -131,6 +140,15 @@ export type SiteContent = {
 export const site: SiteContent = {
   name: 'Victoria Nikolaeva',
   skipLink: 'Skip to content',
+  about: {
+    label: 'Off the Clock',
+    intro:
+      'Outside of the job, I am a bubbly energetic person with alot of love for my friends and family. I am a big fan anything artistic and try everyday to have a little whimsy in my life!',
+    hobbiesLabel: "When I'm not coding:",
+    funFactLabel: 'Fun fact:',
+    notesHeading: 'Field notes',
+    notesLink: { label: 'All notes →', href: '#' },
+  },
   projectsCopy: {
     heading: 'Projects',
     stackLabel: 'Stack',
@@ -141,7 +159,7 @@ export const site: SiteContent = {
     emptyMessage: 'No projects yet',
   },
   hero: {
-    photo: 'public/portfolio_pic.webp',
+    photo: '/portfolio_pic.webp',
     photoAlt: 'Portrait of Victoria Nikolaeva, smiling',
     greeting: "Hi, I'm",
     lead: 'I',
@@ -155,14 +173,14 @@ export const site: SiteContent = {
     primaryCta: { label: 'See my work', href: '#work' },
     secondaryCta: {
       label: 'Download resume',
-      href: 'public/Victoria_Nikolaeva_Resume_2026.pdf',
+      href: '/Victoria_Nikolaeva_Resume_2026.pdf',
     },
   },
   experience: {
     heading: 'Experience',
     intro: 'The soil that nuture my knowledge',
     resumeLabel: 'Download resume (PDF)',
-    resumeHref: 'public/Victoria_Nikolaeva_Resume_2026.pdf',
+    resumeHref: '/Victoria_Nikolaeva_Resume_2026.pdf',
     educationLabel: 'Education',
     courseworkLabel: 'Coursework',
     minorLabel: 'Minor',
@@ -183,7 +201,6 @@ export const site: SiteContent = {
   },
   sections: {
     workAreas: '[Work areas]',
-    about: '[About]',
     contact: '[Contact]',
   },
   statusLine: 'Open to Work, Nov. 2026',
@@ -310,18 +327,18 @@ export const site: SiteContent = {
   ],
 
   fieldNotes: [
-    { date: '[YYYY-MM-DD]', tag: '[Tag]', title: '[Field note title]' },
-    { date: '[YYYY-MM-DD]', tag: '[Tag]', title: '[Field note title]' },
-    { date: '[YYYY-MM-DD]', tag: '[Tag]', title: '[Field note title]' },
+    { date: '2026-11-03', tag: 'Work', title: 'Working on this portfolio!' },
+    { date: '2026-10-29', tag: 'Adventure', title: "Went to Adobe's ColdFusion Confrence!" },
+    { date: '2026-10-28', tag: 'Work', title: 'Finish up Arcana Noctis!' },
   ],
 
   hobbies: [
-    { name: '[Hobby]', description: '[A line about it.]' },
-    { name: '[Hobby]', description: '[A line about it.]' },
-    { name: '[Hobby]', description: '[A line about it.]' },
+    { name: 'Sketching', description: '[A line about it.]' },
+    { name: 'Practicing Yoga', description: '[A line about it.]' },
+    { name: 'Taking Care of my Plants', description: '[A line about it.]' },
   ],
 
-  funFact: '[A fun fact about me.]',
+  funFact: 'Whenever I need to focus, I like to wear a crown ',
 
   toolbox: [
     { name: '[Group 1]', items: ['[Item]', '[Item]', '[Item]'] },
@@ -330,8 +347,8 @@ export const site: SiteContent = {
   ],
 
   contact: [
-    { label: 'Email', href: '[mailto:you@example.com]' },
-    { label: 'LinkedIn', href: '[https://linkedin.com/in/your-handle]' },
-    { label: 'GitHub', href: '[https://github.com/your-handle]' },
+    { label: 'Email', href: '[mailto:vnikolaeva04@gmail.com]' },
+    { label: 'LinkedIn', href: '[https://linkedin.com/in/victoria-nikolaeva04]' },
+    { label: 'GitHub', href: '[https://github.com/victoria-nikolaeva04]' },
   ],
 }

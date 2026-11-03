@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 
 type WavyBandProps = {
-  children: ReactNode
+  children?: ReactNode
   className?: string
 }
 
