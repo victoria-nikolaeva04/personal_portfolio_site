@@ -26,10 +26,10 @@ TypeScript, Tailwind CSS v4, HTML, TanStack Router, React 19, Vite
 - `npm run format` – format with Prettier and auto-fix with ESLint
 
 ### Design
-Theme: A little cute greenhouse (I am a growing developer after all) 
-Color Palette: Purples/Plum, Greens, Cream, Marigold yellow 
-Fonts: Fraunces, DM Sans, Caveat 
-**Put a Sketch
+Theme: A little cute greenhouse (I am a growing developer after all)  
+Color Palette: Purples/Plum, Greens, Cream, Marigold yellow  
+Fonts: Fraunces, DM Sans, Caveat  
+**Put a Sketch  
 
 
 ## Building Log
