@@ -1,5 +1,7 @@
+export type AreaId = 'build' | 'think' | 'design' | 'lead'
+
 export type Area = {
-  id: string
+  id: AreaId
   name: string
   subtitle: string
   description: string
@@ -24,17 +26,16 @@ export type Education = {
   coursework: string[]
 }
 
-export type ProjectStatus = 'live' | 'in-progress' | 'archived'
-
 export type Project = {
   slug: string
   title: string
-  areas: Area['id'][]
-  status: ProjectStatus
+  areas: AreaId[]
   description: string
-  role: string
   stack: string[]
   thumbnail: string
+  thumbnailAlt: string
+  github?: string
+  liveUrl?: string
 }
 
 export type FieldNote = {
@@ -60,7 +61,6 @@ export type ContactLink = {
 
 export type SectionHeadings = {
   workAreas: string
-  work: string
   about: string
   contact: string
 }
@@ -91,8 +91,19 @@ export type ExperienceCopy = {
   minorLabel: string
 }
 
+export type ProjectsCopy = {
+  heading: string
+  stackLabel: string
+  caseStudyLabel: string
+  caseStudyHref: string
+  githubLabel: string
+  liveLabel: string
+  emptyMessage: string
+}
+
 export type SiteContent = {
   name: string
+  projectsCopy: ProjectsCopy
   experience: ExperienceCopy
   hero: Hero
   footer: {
@@ -120,6 +131,15 @@ export type SiteContent = {
 export const site: SiteContent = {
   name: 'Victoria Nikolaeva',
   skipLink: 'Skip to content',
+  projectsCopy: {
+    heading: 'Projects',
+    stackLabel: 'Stack',
+    caseStudyLabel: 'Learn More →',
+    caseStudyHref: '#',
+    githubLabel: 'View source on GitHub',
+    liveLabel: 'Visit the live site',
+    emptyMessage: 'No projects yet',
+  },
   hero: {
     photo: 'public/portfolio_pic.webp',
     photoAlt: 'Portrait of Victoria Nikolaeva, smiling',
@@ -133,7 +153,10 @@ export const site: SiteContent = {
     ],
     subtitle: 'Recent CS Graduate with a lot of Heart',
     primaryCta: { label: 'See my work', href: '#work' },
-    secondaryCta: { label: 'Download resume', href: 'public/Victoria_Nikolaeva_Resume_2026.pdf' },
+    secondaryCta: {
+      label: 'Download resume',
+      href: 'public/Victoria_Nikolaeva_Resume_2026.pdf',
+    },
   },
   experience: {
     heading: 'Experience',
@@ -160,7 +183,6 @@ export const site: SiteContent = {
   },
   sections: {
     workAreas: '[Work areas]',
-    work: '[Work]',
     about: '[About]',
     contact: '[Contact]',
   },
@@ -168,29 +190,29 @@ export const site: SiteContent = {
 
   areas: [
     {
-      id: '[area-1]',
-      name: '[Work area 1]',
+      id: 'build',
+      name: 'Build',
       subtitle: '[Short subtitle]',
       description: '[One or two sentences about this area of work.]',
       tools: ['[Tool A]', '[Tool B]', '[Tool C]'],
     },
     {
-      id: '[area-2]',
-      name: '[Work area 2]',
+      id: 'think',
+      name: 'Think',
       subtitle: '[Short subtitle]',
       description: '[One or two sentences about this area of work.]',
       tools: ['[Tool A]', '[Tool B]', '[Tool C]'],
     },
     {
-      id: '[area-3]',
-      name: '[Work area 3]',
+      id: 'design',
+      name: 'Design',
       subtitle: '[Short subtitle]',
       description: '[One or two sentences about this area of work.]',
       tools: ['[Tool A]', '[Tool B]', '[Tool C]'],
     },
     {
-      id: '[area-4]',
-      name: '[Work area 4]',
+      id: 'lead',
+      name: 'Lead',
       subtitle: '[Short subtitle]',
       description: '[One or two sentences about this area of work.]',
       tools: ['[Tool A]', '[Tool B]', '[Tool C]'],
@@ -253,34 +275,37 @@ export const site: SiteContent = {
 
   projects: [
     {
-      slug: '[project-one]',
-      title: '[Project one]',
-      areas: ['[area-1]'],
-      status: 'live',
+      slug: 'Arcana Noctis',
+      title: 'Arcana Noctis',
+      areas: ['build'],
       description: '[What the project is and why it matters.]',
-      role: '[My role]',
       stack: ['[Tech A]', '[Tech B]'],
-      thumbnail: '[/images/project-one.png]',
+      thumbnail: '',
+      thumbnailAlt: '[Screenshot of the project]',
+      github: '#',
+      liveUrl: '#',
     },
     {
-      slug: '[project-two]',
-      title: '[Project two]',
-      areas: ['[area-2]', '[area-3]'],
-      status: 'in-progress',
+      slug: 'Soundmate',
+      title: 'Soundmate',
+      areas: ['think', 'design'],
       description: '[What the project is and why it matters.]',
-      role: '[My role]',
       stack: ['[Tech A]', '[Tech B]'],
-      thumbnail: '[/images/project-two.png]',
+      thumbnail: '',
+      thumbnailAlt: '[Screenshot of the project]',
+      github: '#',
+      liveUrl: '#',
     },
     {
-      slug: '[project-three]',
-      title: '[Project three]',
-      areas: ['[area-4]'],
-      status: 'archived',
+      slug: 'AI Career Quiz',
+      title: 'AI Career Quiz',
+      areas: ['lead'],
       description: '[What the project is and why it matters.]',
-      role: '[My role]',
       stack: ['[Tech A]', '[Tech B]'],
-      thumbnail: '[/images/project-three.png]',
+      thumbnail: '',
+      thumbnailAlt: '[Screenshot of the project]',
+      github: '#',
+      liveUrl: '#',
     },
   ],
 

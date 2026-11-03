@@ -29,9 +29,4 @@ TypeScript, Tailwind CSS v4, HTML, TanStack Router, React 19, Vite
 Theme: A little cute greenhouse (I am a growing developer after all)  
 Color Palette: Purples/Plum, Greens, Cream, Marigold yellow  
 Fonts: Fraunces, DM Sans, Caveat  
-**Put a Sketch  
-
-
-## Building Log
-### Day 1
-- Planning + Setup
+**Put a Sketch

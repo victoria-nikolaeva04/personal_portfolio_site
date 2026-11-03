@@ -14,10 +14,10 @@ function GreenhouseWindow() {
         d="M40 640V380A360 360 0 0 1 760 380V640Z"
         fill="#E6EDD3"
         fillOpacity="0.55"
-        stroke="#A7B97A"
+        stroke="#c3d88eff"
         strokeWidth="2"
       />
-      <g stroke="#A7B97A" strokeOpacity="0.45" strokeWidth="1.5">
+      <g stroke="#c3d88ebe" strokeOpacity="0.45" strokeWidth="1.5">
         <path d="M400 20V640" />
         <path d="M40 380H760" />
         <path d="M220 68V640" />
@@ -45,7 +45,7 @@ export function Hero() {
           height={150}
           className="bg-matcha border-plum h-[150px] w-[150px] rounded-full border-[3px] object-cover"
         />
-        {/*  <p className="bg-paper border-matcha mt-6 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-sm">
+       {/*  <p className="bg-paper border-matcha mt-6 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-sm">
           <span
             className="bg-moss h-2.5 w-2.5 rounded-full"
             aria-hidden="true"
