@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { Hero } from '#/components/Hero'
 import { Section } from '#/components/Section'
 import { site } from '#/content/site'
 
@@ -8,7 +9,7 @@ function Home() {
   return (
     <>
       <main id="main">
-        <Section id="top" heading={site.sections.top} level={1} />
+        <Hero />
         <Section id="work-areas" heading={site.sections.workAreas} />
         <Section id="experience" heading={site.sections.experience} />
         <Section id="work" heading={site.sections.work} />

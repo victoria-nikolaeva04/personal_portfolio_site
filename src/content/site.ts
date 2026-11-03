@@ -58,7 +58,6 @@ export type ContactLink = {
 }
 
 export type SectionHeadings = {
-  top: string
   workAreas: string
   experience: string
   work: string
@@ -71,8 +70,20 @@ export type NavLink = {
   href: string
 }
 
+export type Hero = {
+  photo: string
+  photoAlt: string
+  greeting: string
+  lead: string
+  phrases: string[]
+  subtitle: string
+  primaryCta: NavLink
+  secondaryCta: NavLink
+}
+
 export type SiteContent = {
   name: string
+  hero: Hero
   footer: {
     credit: string
     updated: string
@@ -98,6 +109,21 @@ export type SiteContent = {
 export const site: SiteContent = {
   name: 'Victoria Nikolaeva',
   skipLink: 'Skip to content',
+  hero: {
+    photo: 'public/portfolio_pic.webp',
+    photoAlt: 'Portrait of Victoria Nikolaeva, smiling',
+    greeting: "Hi, I'm",
+    lead: 'I',
+    phrases: [
+      'am a Software Developer',
+      'am a UX/UI Designer',
+      'am an AI engineer',
+      'am always learning'
+    ],
+    subtitle: 'Recent CS Graduate with a lot of Heart',
+    primaryCta: { label: 'See my work', href: '#work' },
+    secondaryCta: { label: 'Download resume', href: '#resume' }, // Need to Update this to actually download a resume
+  },
   footer: {
     credit: 'Designed and built by',
     updated: 'Watered weekly ·  Last updated Nov. 2026',
@@ -113,14 +139,13 @@ export const site: SiteContent = {
     cta: { label: 'Say hi', href: '#contact' },
   },
   sections: {
-    top: '[Hero heading]',
     workAreas: '[Work areas]',
     experience: '[Experience]',
     work: '[Work]',
     about: '[About]',
     contact: '[Contact]',
   },
-  statusLine: '[Status line, e.g. Open to new roles · Based in City]',
+  statusLine: 'Open to Work, Nov. 2026',
 
   areas: [
     {
