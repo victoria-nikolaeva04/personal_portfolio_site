@@ -45,13 +45,13 @@ export function Hero() {
           height={150}
           className="bg-matcha border-plum h-[150px] w-[150px] rounded-full border-[3px] object-cover"
         />
-        <p className="bg-paper border-matcha mt-6 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-sm">
+       {/*  <p className="bg-paper border-matcha mt-6 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-sm">
           <span
             className="bg-moss h-2.5 w-2.5 rounded-full"
             aria-hidden="true"
           />
           {site.statusLine}
-        </p>
+        </p> */}
         <h1
           id="top-heading"
           className="font-display mt-6 text-[clamp(48px,6.4vw,88px)] leading-[1.05] font-semibold"
@@ -61,7 +61,7 @@ export function Hero() {
         <p className="font-display mt-2 text-[clamp(28px,3.6vw,48px)] leading-tight">
           {hero.lead} <em className="text-moss italic">{hero.phrases[0]}</em>
         </p>
-        <p className="text-plum-soft mt-4 text-lg">{hero.subtitle}</p>
+        {/* <p className="text-plum-soft mt-4 text-lg">{hero.subtitle}</p> */}
         <div className="mt-8 flex flex-wrap justify-center gap-4">
           <a
             href={hero.primaryCta.href}
