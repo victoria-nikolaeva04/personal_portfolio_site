@@ -4,7 +4,7 @@ import { site } from '#/content/site'
 
 export function Header() {
   return (
-    <header className="py-5">
+    <header className="bg-cream/95 sticky top-0 z-40 py-4 backdrop-blur">
       <Container className="flex flex-wrap items-center justify-between gap-x-8 gap-y-3">
         <a href="#top" className="flex items-center gap-2">
           <Sprout />
