@@ -4,7 +4,7 @@ import { site } from '#/content/site'
 
 export function Header() {
   return (
-    <header className="bg-cream/95 sticky top-0 z-40 py-4 backdrop-blur">
+    <header className="bg-cream/95 sticky top-0 z-40 py-2 backdrop-blur border-b border-marigold-soft shadow-lg">
       <Container className="flex flex-wrap items-center justify-between gap-x-8 gap-y-3">
         <a href="#top" className="flex items-center gap-2">
           <Sprout />
@@ -27,7 +27,7 @@ export function Header() {
             <li>
               <a
                 href={site.nav.cta.href}
-                className="bg-marigold text-plum inline-block rounded-full px-5 py-2 font-medium"
+                className="bg-marigold text-plum inline-block rounded-full px-5 py-1 font-medium"
               >
                 {site.nav.cta.label}
               </a>
