@@ -20,9 +20,9 @@ My personal portfolio site for recruiter and peers to see my work and thought pr
 TypeScript, TailWind CSS, CSS, TanStack Router, React + VITE
 
 ### Design
-Theme: A little cute greenhouse (I am a growing developer after all)
-Color Palette: Purples/Plum, Greens, Cream, Marigold yellow
-Fonts: Fraunces, DM Sans, Caveat
+Theme: A little cute greenhouse (I am a growing developer after all) 
+Color Palette: Purples/Plum, Greens, Cream, Marigold yellow 
+Fonts: Fraunces, DM Sans, Caveat 
 **Put a Sketch
 
 
