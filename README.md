@@ -17,7 +17,13 @@ My personal portfolio site for recruiter and peers to see my work and thought pr
     - Contact Me
 
 ### Tech Stack
-TypeScript, TailWind CSS, CSS, TanStack Router, React + VITE
+TypeScript, Tailwind CSS v4, HTML, TanStack Router, React 19, Vite
+
+### Scripts
+- `npm run dev` – start the Vite dev server on port 3000
+- `npm run build` – create a production build
+- `npm run lint` – run ESLint
+- `npm run format` – format with Prettier and auto-fix with ESLint
 
 ### Design
 Theme: A little cute greenhouse (I am a growing developer after all) 
