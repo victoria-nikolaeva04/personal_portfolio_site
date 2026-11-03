@@ -57,8 +57,32 @@ export type ContactLink = {
   href: string
 }
 
+export type SectionHeadings = {
+  top: string
+  workAreas: string
+  experience: string
+  work: string
+  about: string
+  contact: string
+}
+
+export type NavLink = {
+  label: string
+  href: string
+}
+
 export type SiteContent = {
   name: string
+  footer: {
+    credit: string
+    updated: string
+  }
+  skipLink: string
+  nav: {
+    links: NavLink[]
+    cta: NavLink
+  }
+  sections: SectionHeadings
   statusLine: string
   areas: Area[]
   jobs: Job[]
@@ -72,7 +96,30 @@ export type SiteContent = {
 }
 
 export const site: SiteContent = {
-  name: '[Your name]',
+  name: 'Victoria Nikolaeva',
+  skipLink: 'Skip to content',
+  footer: {
+    credit: 'Designed and built by',
+    updated: 'Watered weekly ·  Last updated Nov. 2026',
+  },
+  nav: {
+    links: [
+      { label: 'Experience', href: '#experience' },
+      { label: 'Projects', href: '#work' },
+      // { label: 'Field notes', href: '#notes' },
+      { label: 'About', href: '#about' },
+      { label: 'Resume', href: '#resume' },
+    ],
+    cta: { label: 'Say hi', href: '#contact' },
+  },
+  sections: {
+    top: '[Hero heading]',
+    workAreas: '[Work areas]',
+    experience: '[Experience]',
+    work: '[Work]',
+    about: '[About]',
+    contact: '[Contact]',
+  },
   statusLine: '[Status line, e.g. Open to new roles · Based in City]',
 
   areas: [
