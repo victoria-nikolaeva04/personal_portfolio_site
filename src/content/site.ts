@@ -18,9 +18,10 @@ export type Job = {
 export type Education = {
   school: string
   degree: string
-  location: string
-  dates: string
-  details: string[]
+  minor: string
+  graduation: string
+  honors: string
+  coursework: string[]
 }
 
 export type ProjectStatus = 'live' | 'in-progress' | 'archived'
@@ -59,7 +60,6 @@ export type ContactLink = {
 
 export type SectionHeadings = {
   workAreas: string
-  experience: string
   work: string
   about: string
   contact: string
@@ -81,8 +81,19 @@ export type Hero = {
   secondaryCta: NavLink
 }
 
+export type ExperienceCopy = {
+  heading: string
+  intro: string
+  resumeLabel: string
+  resumeHref: string
+  educationLabel: string
+  courseworkLabel: string
+  minorLabel: string
+}
+
 export type SiteContent = {
   name: string
+  experience: ExperienceCopy
   hero: Hero
   footer: {
     credit: string
@@ -118,11 +129,20 @@ export const site: SiteContent = {
       'am a Software Developer',
       'am a UX/UI Designer',
       'am an AI engineer',
-      'am always learning'
+      'am always learning',
     ],
     subtitle: 'Recent CS Graduate with a lot of Heart',
     primaryCta: { label: 'See my work', href: '#work' },
-    secondaryCta: { label: 'Download resume', href: '#resume' }, // Need to Update this to actually download a resume
+    secondaryCta: { label: 'Download resume', href: 'public/Victoria_Nikolaeva_Resume_2026.pdf' },
+  },
+  experience: {
+    heading: 'Experience',
+    intro: 'The soil that nuture my knowledge',
+    resumeLabel: 'Download resume (PDF)',
+    resumeHref: 'public/Victoria_Nikolaeva_Resume_2026.pdf',
+    educationLabel: 'Education',
+    courseworkLabel: 'Coursework',
+    minorLabel: 'Minor',
   },
   footer: {
     credit: 'Designed and built by',
@@ -140,7 +160,6 @@ export const site: SiteContent = {
   },
   sections: {
     workAreas: '[Work areas]',
-    experience: '[Experience]',
     work: '[Work]',
     about: '[About]',
     contact: '[Contact]',
@@ -180,18 +199,34 @@ export const site: SiteContent = {
 
   jobs: [
     {
-      role: '[Job title]',
-      company: '[Company]',
-      location: '[City, Country]',
-      dates: '[Start – End]',
+      role: 'Frontend Engineer',
+      company: 'TCGSpot',
+      location: 'Mantua, NJ',
+      dates: 'Jul. 2025 - Mar. 2026',
       bullets: ['[What I did and the result.]', '[What I did and the result.]'],
       tags: ['[Tag]', '[Tag]'],
     },
     {
-      role: '[Job title]',
-      company: '[Company]',
-      location: '[City, Country]',
-      dates: '[Start – End]',
+      role: 'Undergraduate Researcher',
+      company: 'Univeristy of Delaware - Sensify Labs',
+      location: 'Newark, DE',
+      dates: 'Sep. 2024 - Dec. 2025',
+      bullets: ['[What I did and the result.]', '[What I did and the result.]'],
+      tags: ['[Tag]', '[Tag]'],
+    },
+    {
+      role: 'Web Developer & Graphic Design Intern',
+      company: 'Delmarva Digital',
+      location: 'Laural, DE',
+      dates: 'Jun. 2024 - Aug. 2024',
+      bullets: ['[What I did and the result.]', '[What I did and the result.]'],
+      tags: ['[Tag]', '[Tag]'],
+    },
+    {
+      role: 'Seasonal Teaching Assistant',
+      company: 'Univeristy of Delaware - CIS Department',
+      location: 'Newark, DE',
+      dates: 'Aug. 2023 - Dec. 2025',
       bullets: ['[What I did and the result.]', '[What I did and the result.]'],
       tags: ['[Tag]', '[Tag]'],
     },
@@ -199,11 +234,20 @@ export const site: SiteContent = {
 
   education: [
     {
-      school: '[School]',
-      degree: '[Degree / Program]',
-      location: '[City, Country]',
-      dates: '[Start – End]',
-      details: ['[Honors, focus, or relevant coursework.]'],
+      school: 'University of Delaware',
+      degree: 'Bachelor of Arts & Science - Computer Science',
+      minor: ' Interactive Media Design',
+      graduation: 'Dec. 2025',
+      honors: 'Awards: Hatem M. Khalil Memorial Award',
+      coursework: [
+        'Human-Computer Interaction',
+        'Software Development',
+        'Web Technologies',
+        'DevOps',
+        'Databases',
+        'Data Structures',
+        'Technical Writing',
+      ],
     },
   ],
 

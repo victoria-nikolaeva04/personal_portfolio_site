@@ -45,7 +45,7 @@ export function Hero() {
           height={150}
           className="bg-matcha border-plum h-[150px] w-[150px] rounded-full border-[3px] object-cover"
         />
-       {/*  <p className="bg-paper border-matcha mt-6 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-sm">
+        {/*  <p className="bg-paper border-matcha mt-6 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-sm">
           <span
             className="bg-moss h-2.5 w-2.5 rounded-full"
             aria-hidden="true"
