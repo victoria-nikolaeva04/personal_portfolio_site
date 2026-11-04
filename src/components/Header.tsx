@@ -8,7 +8,7 @@ export function Header() {
     <header className="bg-cream/95 sticky top-0 z-40 py-2 backdrop-blur border-b border-marigold-soft shadow-lg">
       <Container className="flex flex-wrap items-center justify-between gap-x-8 gap-y-3">
         <Link to="/" hash="top" className="flex items-center gap-2">
-          <Sprout />
+          <Sprout draw />
           <span className="font-display text-[23px] leading-none font-semibold">
             {site.name}
           </span>

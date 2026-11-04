@@ -11,6 +11,9 @@ type Vine = {
   leaves: { x: number; y: number; angle: number }[]
 }
 
+// Each vine swings at its own speed.
+const swingClasses = ['swing', 'swing-2', 'swing-3']
+
 const vines: Vine[] = [
   {
     path: 'M26 70C22 82 29 92 23 106',
@@ -70,7 +73,7 @@ export function HangingPlant({
         <path d="M40 8L62 42" />
       </g>
 
-      <g className={leafClassNames?.[0]} style={leafGroupStyle}>
+      <g className={leafClassNames?.[0] ?? 'sway'} style={leafGroupStyle}>
         <path
           d="M40 44C40 34 32 28 24 30C26 40 32 46 40 44Z"
           className="fill-matcha"
@@ -97,7 +100,10 @@ export function HangingPlant({
       {vines.map((vine, index) => (
         <g
           key={vine.path}
-          className={leafClassNames?.[index + 1]}
+          className={
+            leafClassNames?.[index + 1] ??
+            swingClasses[index % swingClasses.length]
+          }
           style={{ ...leafGroupStyle, transformOrigin: 'top center' }}
         >
           <path

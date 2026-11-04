@@ -1,6 +1,9 @@
 import { fillClass, leafGroupStyle } from '#/components/plants/palette'
 import type { PaletteColor, PlantProps } from '#/components/plants/palette'
 
+// Neighbouring leaves cycle through these so they sway at different speeds.
+const swayClasses = ['sway', 'sway-2', 'sway-3']
+
 export type PottedPlantVariant = 'leafy' | 'snake' | 'flowers' | 'tree'
 
 type PottedPlantProps = PlantProps & {
@@ -38,7 +41,8 @@ function Foliage({
   variant: PottedPlantVariant
   leafClassNames?: string[]
 }) {
-  const cls = (index: number) => leafClassNames?.[index]
+  const cls = (index: number) =>
+    leafClassNames?.[index] ?? swayClasses[index % swayClasses.length]
 
   switch (variant) {
     case 'snake':

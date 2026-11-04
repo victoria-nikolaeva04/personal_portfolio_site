@@ -104,6 +104,7 @@ export function Hero() {
         size={110}
         potColor="plum"
         rimColor="marigold"
+        leafClassNames={['sway-3', 'swing-3', 'swing', 'swing-2']}
         className="pointer-events-none absolute top-0 right-1 hidden sm:block"
       />
       <PottedPlant
