@@ -1,5 +1,5 @@
 import { Container } from '#/components/Container'
-import { Sprout } from '#/components/Sprout'
+import { Sprout } from '#/components/plants/Sprout'
 import { site } from '#/content/site'
 
 export function Header() {

@@ -56,10 +56,10 @@ export function Toolbox() {
             ))}
           </div>
 
-          <div className="bg-plum relative hidden h-[6px] w-full rounded-full lg:block">
+          {/* <div className="bg-plum relative hidden h-[6px] w-full rounded-full lg:block">
             <Bracket className="left-[10%]" />
             <Bracket className="right-[10%] -scale-x-100" />
-          </div>
+          </div> */}
         </div>
       </Container>
     </section>

@@ -371,7 +371,7 @@ export const site: SiteContent = {
       name: 'Frameworks & Libraries',
       items: ['React', 'Python Panda', 'Python Matplotlib'],
     },
-    { name: 'Tools & DevOps', items: ['VsCode', 'Agile Methodology', 'Scrum Methodology'] },
+    { name: 'Tools & DevOps', items: ['VSCode', 'Agile Methodology', 'Scrum Methodology'] },
     {
       name: 'Design & Collaboration',
       items: ['Figma', 'Wireframing', 'Teamwork'],

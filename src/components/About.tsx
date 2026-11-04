@@ -1,5 +1,5 @@
 import { Container } from '#/components/Container'
-import { Sprout } from '#/components/Sprout'
+import { Sprout } from '#/components/plants/Sprout'
 import { WavyBand } from '#/components/WavyBand'
 import { site } from '#/content/site'
 
