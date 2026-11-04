@@ -2,6 +2,7 @@ import { Container } from '#/components/Container'
 import { HangingPlant } from '#/components/plants/HangingPlant'
 import { Leaf } from '#/components/plants/Leaf'
 import { PottedPlant } from '#/components/plants/PottedPlant'
+import { TypingLine } from '#/components/TypingLine'
 import { site } from '#/content/site'
 
 function GreenhouseWindow() {
@@ -30,6 +31,58 @@ function GreenhouseWindow() {
   )
 }
 
+const pollen = [
+  {
+    color: 'bg-marigold',
+    left: '30%',
+    bottom: '28%',
+    delay: '0s',
+    sway: '14px',
+  },
+  {
+    color: 'bg-matcha',
+    left: '42%',
+    bottom: '38%',
+    delay: '2.3s',
+    sway: '-10px',
+  },
+  {
+    color: 'bg-marigold',
+    left: '60%',
+    bottom: '30%',
+    delay: '4.6s',
+    sway: '12px',
+  },
+  {
+    color: 'bg-matcha',
+    left: '70%',
+    bottom: '40%',
+    delay: '6.9s',
+    sway: '-14px',
+  },
+]
+
+function PollenDots() {
+  return (
+    <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+      {pollen.map((dot, index) => (
+        <span
+          key={index}
+          className={`pollen ${dot.color} absolute h-2 w-2 rounded-full opacity-0`}
+          style={
+            {
+              left: dot.left,
+              bottom: dot.bottom,
+              animationDelay: dot.delay,
+              '--pollen-sway': dot.sway,
+            } as React.CSSProperties
+          }
+        />
+      ))}
+    </div>
+  )
+}
+
 export function Hero() {
   const { hero } = site
 
@@ -40,6 +93,7 @@ export function Hero() {
       className="relative flex min-h-[600px] items-center justify-center overflow-hidden pt-16 pb-36 text-center md:pb-24"
     >
       <GreenhouseWindow />
+      <PollenDots />
       <HangingPlant
         size={110}
         potColor="marigold"
@@ -107,9 +161,11 @@ export function Hero() {
         >
           {hero.greeting} {site.name}.
         </h1>
-        <p className="font-display mt-2 text-[clamp(28px,3.6vw,48px)] leading-tight">
-          {hero.lead} <em className="text-moss italic">{hero.phrases[0]}</em>
-        </p>
+        <TypingLine
+          lead={hero.lead}
+          phrases={hero.phrases}
+          className="font-display mt-2 text-[clamp(28px,3.6vw,48px)] leading-tight"
+        />
         {/* <p className="text-plum-soft mt-4 text-lg">{hero.subtitle}</p> */}
         <div className="mt-8 flex flex-wrap justify-center gap-4">
           <a
