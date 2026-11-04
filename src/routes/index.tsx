@@ -4,11 +4,17 @@ import { Contact } from '#/components/Contact'
 import { Experience } from '#/components/Experience'
 import { Hero } from '#/components/Hero'
 import { Projects } from '#/components/Projects'
+import { loadNotes } from '#/content/notes'
 import { Toolbox } from '#/components/Toolbox'
 
-export const Route = createFileRoute('/')({ component: Home })
+export const Route = createFileRoute('/')({
+  loader: () => loadNotes(),
+  component: Home,
+})
 
 function Home() {
+  const notes = Route.useLoaderData()
+
   return (
     <>
       <main id="main">
@@ -17,7 +23,7 @@ function Home() {
         <Experience />
         <Projects />
         <Toolbox />
-        <About />
+        <About notes={notes} />
         <Contact />
       </main>
     </>

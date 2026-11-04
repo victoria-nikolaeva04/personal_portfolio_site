@@ -30,6 +30,12 @@ export const mdxComponents: MDXComponents = {
       {...props}
     />
   ),
+  pre: (props) => (
+    <pre
+      className="bg-moss text-paper mt-6 overflow-x-auto rounded-[16px] p-5 text-[15px] leading-relaxed [&_code]:bg-transparent [&_code]:p-0"
+      {...props}
+    />
+  ),
   img: (props) => (
     <img
       className="border-plum mt-6 w-full rounded-[20px] border-2"

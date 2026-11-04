@@ -1,6 +1,8 @@
+import { Link } from '@tanstack/react-router'
 import { Container } from '#/components/Container'
 import { Sprout } from '#/components/plants/Sprout'
 import { WavyBand } from '#/components/WavyBand'
+import type { Note } from '#/content/notes'
 import { site } from '#/content/site'
 
 function PencilIcon() {
@@ -23,8 +25,8 @@ function PencilIcon() {
   )
 }
 
-export function About() {
-  const { about, hobbies, funFact, fieldNotes } = site
+export function About({ notes }: { notes: Note[] }) {
+  const { about, hobbies, funFact } = site
 
   return (
     <section id="about" aria-labelledby="about-heading" className="pb-20">
@@ -76,21 +78,28 @@ export function About() {
               {about.notesHeading}
             </h2>
             <ol className="divide-matcha-soft mt-6 divide-y-2">
-              {fieldNotes.slice(0, 3).map((note, index) => (
-                <li key={`${note.title}-${index}`} className="py-4 first:pt-0">
+              {notes.slice(0, 3).map((note) => (
+                <li key={note.slug} className="py-4 first:pt-0">
                   <p className="font-hand text-moss text-xl">
                     {note.date} · {note.tag}
                   </p>
-                  <p className="mt-1 font-bold">{note.title}</p>
+                  <Link
+                    to="/notes/$slug"
+                    params={{ slug: note.slug }}
+                    className="mt-1 inline-block font-bold hover:underline"
+                  >
+                    {note.title}
+                  </Link>
                 </li>
               ))}
             </ol>
-            <a
-              href={about.notesLink.href}
+            <Link
+              to="/notes"
+              search={{}}
               className="text-moss mt-4 inline-block font-medium"
             >
               {about.notesLink.label}
-            </a>
+            </Link>
           </div>
         </div>
       </Container>

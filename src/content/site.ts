@@ -44,12 +44,6 @@ export type Project = {
   liveUrl?: string
 }
 
-export type FieldNote = {
-  date: string
-  tag: string
-  title: string
-}
-
 export type Hobby = {
   name: string
   description: string
@@ -113,6 +107,20 @@ export type AboutCopy = {
   notesLink: NavLink
 }
 
+export type NotesCopy = {
+  note: string
+  heading: string
+  allLabel: string
+  emptyMessage: string
+  minutesSuffix: string
+  backLabel: string
+  backToHomeLabel: string
+  nextLabel: string
+  notFoundNote: string
+  notFoundHeading: string
+  notFoundBody: string
+}
+
 export type ContactCopy = {
   note: string
   heading: string
@@ -143,6 +151,7 @@ export type CaseStudyCopy = {
 export type SiteContent = {
   name: string
   caseStudyCopy: CaseStudyCopy
+  notesCopy: NotesCopy
   toolboxCopy: ToolboxCopy
   contactCopy: ContactCopy
   about: AboutCopy
@@ -164,7 +173,6 @@ export type SiteContent = {
   jobs: Job[]
   education: Education[]
   projects: Project[]
-  fieldNotes: FieldNote[]
   hobbies: Hobby[]
   funFact: string
   toolbox: ToolboxGroup[]
@@ -174,6 +182,20 @@ export type SiteContent = {
 export const site: SiteContent = {
   name: 'Victoria Nikolaeva',
   skipLink: 'Skip to content',
+  notesCopy: {
+    note: "what I'm learning, as I learn it",
+    heading: 'Field notes',
+    allLabel: 'All',
+    emptyMessage: 'No notes with that tag yet',
+    minutesSuffix: 'min read',
+    backLabel: '← All notes',
+    backToHomeLabel: 'Back to home',
+    nextLabel: 'Next note →',
+    notFoundNote: 'hmm, nothing growing here',
+    notFoundHeading: "That note doesn't exist (yet).",
+    notFoundBody:
+      'The link may be out of date. The notes list has everything that is ready to read.',
+  },
   caseStudyCopy: {
     roleLabel: 'Role',
     teamLabel: 'Team',
@@ -394,7 +416,7 @@ export const site: SiteContent = {
       github: '#',
       liveUrl: '#',
     },
-        {
+    {
       slug: 'ai-career-quiz',
       title: 'AI Career Quiz',
       areas: ['build'],
@@ -405,16 +427,6 @@ export const site: SiteContent = {
       github: '#',
       liveUrl: '#',
     },
-  ],
-
-  fieldNotes: [
-    { date: '2026-11-03', tag: 'Work', title: 'Working on this portfolio!' },
-    {
-      date: '2026-10-29',
-      tag: 'Adventure',
-      title: "Went to Adobe's ColdFusion Confrence!",
-    },
-    { date: '2026-10-28', tag: 'Work', title: 'Finish up Arcana Noctis!' },
   ],
 
   hobbies: [
