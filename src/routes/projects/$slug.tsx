@@ -52,7 +52,9 @@ function CaseStudyPage() {
     meta && { label: caseStudyCopy.teamLabel, value: meta.team },
     meta && { label: caseStudyCopy.timelineLabel, value: meta.dates },
     { label: caseStudyCopy.toolsLabel, value: stack.join(', ') },
-  ].filter((detail) => !!detail)
+  ]
+    .filter((detail) => !!detail)
+    .filter((detail) => detail.value !== '')
 
   const position = projects.findIndex((item) => item.slug === slug)
   const canStep = position !== -1 && projects.length > 1

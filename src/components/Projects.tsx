@@ -1,7 +1,7 @@
 import { Link, useSearch } from '@tanstack/react-router'
+import { useState } from 'react'
 import { areaBandClass } from '#/components/areaColors'
 import { Container } from '#/components/Container'
-import { Leaf } from '#/components/plants/Leaf'
 import { PottedPlant } from '#/components/plants/PottedPlant'
 import { site } from '#/content/site'
 import type { Project } from '#/content/site'
@@ -45,26 +45,62 @@ function ExternalLinkIcon() {
 const iconLinkClass =
   'text-plum hover:bg-matcha-soft inline-flex h-10 w-10 items-center justify-center rounded-full'
 
-function ProjectCard({ project, index }: { project: Project; index: number }) {
-  const { projectsCopy } = site
+type IconLinkProps = {
+  href?: string
+  label: string
+  unavailableLabel: string
+  children: React.ReactNode
+}
+
+// A link that is missing (or still a "#" stub) renders as a grayed-out,
+// non-clickable icon instead of a dead link.
+function IconLink({ href, label, unavailableLabel, children }: IconLinkProps) {
+  if (!href || href === '#') {
+    return (
+      <span
+        role="img"
+        aria-label={unavailableLabel}
+        title={unavailableLabel}
+        className="text-plum/30 inline-flex h-10 w-10 cursor-not-allowed items-center justify-center rounded-full"
+      >
+        {children}
+      </span>
+    )
+  }
 
   return (
-    // The bloom wrapper animates `transform`, so `lift` lives on the card.
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={label}
+      className={iconLinkClass}
+    >
+      {children}
+    </a>
+  )
+}
+
+const bandClasses = Object.values(areaBandClass)
+
+// Cards with a screenshot use their area's color. Cards without one get a
+// random color, picked once when the card mounts so it stays put while you
+// scroll and hover.
+function pickBand(project: Project) {
+  if (project.thumbnail) return areaBandClass[project.areas[0]]
+  return bandClasses[Math.floor(Math.random() * bandClasses.length)]
+}
+
+function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const { projectsCopy } = site
+  const [band] = useState(() => pickBand(project))
+
+  return (
     <div className="bloom" style={{ animationDelay: `${index * 90}ms` }}>
-      <article className="lift group bg-paper border-plum flex h-full flex-col overflow-hidden rounded-[28px] border-2">
+      <article className="bg-paper border-plum flex h-full flex-col overflow-hidden rounded-[28px] border-2">
         <div
-          className={`${areaBandClass[project.areas[0]]} relative flex h-[200px] items-center justify-center p-5`}
+          className={`${band} relative flex h-[200px] items-center justify-center p-5`}
         >
-          <Leaf
-            size={22}
-            color="matcha-soft"
-            className="group-hover:sway pointer-events-none absolute bottom-2 left-2 z-10 -rotate-[25deg]"
-          />
-          <Leaf
-            size={16}
-            color="cream"
-            className="group-hover:sway-2 pointer-events-none absolute right-2 bottom-2 z-10 rotate-[30deg]"
-          />
           {project.thumbnail && (
             <img
               src={project.thumbnail}
@@ -78,41 +114,35 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             {project.title}
           </h3>
           <p>{project.description}</p>
-          <p className="text-plum-soft text-sm">
-            <span className="font-medium">{projectsCopy.stackLabel}:</span>{' '}
-            {project.stack.join(', ')}
-          </p>
+          {project.stack.length > 0 && (
+            <p className="text-plum-soft text-sm">
+              <span className="font-medium">{projectsCopy.stackLabel}:</span>{' '}
+              {project.stack.join(', ')}
+            </p>
+          )}
           <div className="mt-auto flex items-center justify-between gap-3 pt-2">
             <Link
               to="/projects/$slug"
               params={{ slug: project.slug }}
-              className="text-moss font-medium"
+              className="border-moss text-moss hover:bg-moss hover:text-paper rounded-full border-2 px-4 py-1.5 font-medium transition-colors"
             >
               {projectsCopy.caseStudyLabel}
             </Link>
             <div className="ml-auto flex items-center gap-1">
-              {project.github && (
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`${projectsCopy.githubLabel}: ${project.title}`}
-                  className={iconLinkClass}
-                >
-                  <GitHubIcon />
-                </a>
-              )}
-              {project.liveUrl && (
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`${projectsCopy.liveLabel}: ${project.title}`}
-                  className={iconLinkClass}
-                >
-                  <ExternalLinkIcon />
-                </a>
-              )}
+              <IconLink
+                href={project.github}
+                label={`${projectsCopy.githubLabel}: ${project.title}`}
+                unavailableLabel={projectsCopy.noGithubLabel}
+              >
+                <GitHubIcon />
+              </IconLink>
+              <IconLink
+                href={project.liveUrl}
+                label={`${projectsCopy.liveLabel}: ${project.title}`}
+                unavailableLabel={projectsCopy.noLiveLabel}
+              >
+                <ExternalLinkIcon />
+              </IconLink>
             </div>
           </div>
         </div>

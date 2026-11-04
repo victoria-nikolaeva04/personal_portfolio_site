@@ -2,42 +2,61 @@ export const meta = {
   title: 'Arcana Noctis',
   areas: ['build'],
   status: 'shipped',
-  role: '[Your part, e.g. Full-stack developer]',
-  team: '[Team size and roles, e.g. Solo project]',
-  dates: '[Start – End]',
-  stack: ['[Tech A]', '[Tech B]', '[Tech C]'],
+  role: 'Creator',
+  team: 'Solo project',
+  dates: '',
+  stack: ['Python', 'Flask', 'Gemini API', 'Pandas', 'HTML/CSS', 'PythonAnywhere'],
   links: [
-    { label: 'View on GitHub', href: '#' },
-    { label: 'Visit the live site', href: '#' },
+    { label: 'View on GitHub', href: 'https://github.com/victoria-nikolaeva04/project_tarot_card' },
+    { label: 'Visit the live site', href: 'https://vniko.pythonanywhere.com/' },
   ],
 }
 
-[One or two sentences on what Arcana Noctis is, who it is for, and why you built it.]
+Arcana Noctis is a tarot reading site: "Let the Cards Illuminate your Path." It is built around the 78 cards of the Rider-Waite-Smith deck and treats the cards as a mirror for the questions you are holding, not a prediction of your future. I built it as a whimsical tarot card reader and dictionary, working through it in a seven-day build log.
 
 ## What it does
 
-[The main things a person can do with it, in plain words.]
+### Readings
 
-- [A feature]
-- [A feature]
-- [A feature]
+- Ask a question, then draw three cards for past, present, and future
+- Each card can land upright or reversed, and shows the matching meaning
+- A "whimsy" button lets you draw again for a different reading experience
+- Reading buttons stay on screen while you scroll
 
-## How I built it
+### The AI Oracle
 
-[The stack and how the pieces fit together: structure, data, anything you are proud of in the code.]
+After you draw, you can ask the AI Oracle to weave your three cards into one story. It writes a short, mystical reading with an introduction, a section for each card, and some gentle advice. It is framed as entertainment only, and it avoids medical, legal, and financial advice and predictions about death or illness.
 
-1. [A key piece of the build]
-2. [A key piece of the build]
-3. [A key piece of the build]
+### The Arcana Guide
 
-## Challenges
+A card dictionary covering all 78 cards, upright and reversed. You can search and filter the cards, and open any card in a pop-up to read its full meanings.
 
-[The hardest problems you ran into and how you got past them.]
+### Details
 
-## What I learned
+- A crystal-ball loader while the Oracle thinks, with a retry button if the service is busy
+- A control to pause the site's animations
+- A responsive layout that works on phones
 
-[What this project taught you, technically or about how you work.]
+## How it's built
 
-## What's next
+### The app
 
-[What you would add, fix, or try with more time.]
+Arcana Noctis is a Python app built with Flask. It has routes for the home page, readings, the card guide, and the about page, plus an endpoint that asks the Oracle for a reading. Card meanings are read from a tarot meanings dataset with Pandas, and the card images are public domain Rider-Waite-Smith scans that I resized and converted to WebP.
+
+### The Oracle
+
+The Oracle uses Google's Gemini API through the Google GenAI SDK. For each reading, the app sends the three cards with their position, whether they are reversed, and their meanings, and asks for a plain-paragraph reading of a couple hundred words. A set of guardrails keeps the tone gentle and the advice safe.
+
+### Keeping it reliable
+
+- The server checks that exactly three real cards were sent
+- Readings are rate limited per visitor
+- Oracle requests time out quickly instead of hanging, and temporary Gemini errors are retried a couple of times
+- Errors are turned into friendly messages instead of raw failures
+- Usage is logged so I can see how the site is used
+
+The site is deployed on PythonAnywhere. Card meanings come from a published tarot dataset, and the images come from a public domain deck collection.
+
+## My role
+
+I created Arcana Noctis on my own, from the product requirements through the Flask app, the styling, the Oracle integration, and deployment. I also used AI to help with debugging and with the About page copy.

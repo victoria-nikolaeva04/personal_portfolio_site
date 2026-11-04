@@ -1,0 +1,72 @@
+export const meta = {
+  title: 'SoundMate',
+  areas: ['think', 'design'],
+  status: 'classwork',
+  role: 'Team Member',
+  team: 'Team of three',
+  dates: 'Fall 2025',
+  stack: [
+    'TypeScript',
+    'React',
+    'TanStack Start',
+    'NestJS',
+    'Prisma',
+    'PostgreSQL',
+    'Supabase',
+    'Auth0',
+    'Spotify Developer API',
+    'Zod',
+    'Turborepo',
+    'Cloudflare Workers',
+    'Render',
+  ],
+  links: [
+    { label: 'View on GitHub', href: 'https://github.com/UD-CISC474-F25/SoundMate' },
+    { label: 'Visit the live site', href: 'https://soundmate.soundmatedevs.workers.dev/' },
+    { label: 'Watch the live demo', href: 'https://drive.google.com/file/d/1xP7ymjrakZ02gLULlW8upeahLULz79iu/view?usp=sharing' },
+  ],
+}
+
+Soundmate is a social app for college students who love live music: "Find Your Music Community." It connects to Spotify to learn what you listen to, scores how compatible you are with other students, and helps you turn shared taste into real plans, like going to a show together.
+
+## What it does
+
+### Finding your people
+
+- Connect Spotify, which reads your top artists, top tracks, and basic profile info and never posts on your behalf
+- No Spotify? Build a taste profile by hand instead
+- Find classmates by name or username, or browse ranked suggestions, each with a compatibility score based on shared taste
+- Send connection requests to build your friend list
+
+### Events
+
+- Create events like a show, a listening party, or a jam session, with a title, location, date, and music tag
+- Make them open to everyone or invite only
+- RSVP as going or maybe, and filter the events feed by your response
+- Comment on events to make plans with the people going
+
+### Your profile
+
+Profiles show your top artists, genres, and the events you have attended, with an editable bio and social links. You choose whether your Spotify profile is public.
+
+## How it's built
+
+### The architecture
+
+Soundmate is a TypeScript monorepo managed with Turborepo. The front end is a React app built with TanStack Start, with routes for the home page, onboarding, profile, discover, and events. The back end is a NestJS API with separate modules for auth, users, Spotify, matching, events, comments, connections, and links. Data lives in PostgreSQL, accessed through Prisma, and the front end and API share Zod schemas so they agree on what the data looks like.
+
+### Matching
+
+Compatibility is a weighted score. It compares the artists, genres, and songs two people share, giving more weight to the things each person ranks highest, plus a smaller signal from their listening patterns. Artists count for the most, at 40 percent of the score, then genres at 30, songs at 20, and listening patterns at 10.
+
+### Sign-in and Spotify
+
+Auth0 handles sign-in, and the API verifies each request's token before letting it through. Spotify uses its own separate OAuth flow that the back end owns, so Spotify tokens never need to touch the browser.
+
+### Looking ahead
+
+The project's architecture notes sketch how it could grow, with a cache layer, a job queue for background work, and eventually a learned matching model.
+
+## My role
+
+I was one of three team members building Soundmate as a full-stack product, working across a front end, an API, and a database that all had to fit together. Working in a shared monorepo with a shared type contract taught me how much a team moves faster when everyone agrees on the shapes of the data.

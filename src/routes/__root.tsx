@@ -16,15 +16,17 @@ export const Route = createRootRoute({
 function RootComponent() {
   return (
     <>
-      <a
-        href="#main"
-        className="bg-moss text-paper absolute top-2 left-2 z-50 -translate-y-20 rounded px-4 py-2 focus:translate-y-0"
-      >
-        {site.skipLink}
-      </a>
-      <Header />
-      <Outlet />
-      <Footer />
+      <div className="flex min-h-screen flex-col [&>main]:flex-1">
+        <a
+          href="#main"
+          className="bg-moss text-paper absolute top-2 left-2 z-50 -translate-y-20 rounded px-4 py-2 focus:translate-y-0"
+        >
+          {site.skipLink}
+        </a>
+        <Header />
+        <Outlet />
+        <Footer />
+      </div>
       {import.meta.env.DEV && (
         <TanStackDevtools
           config={{
