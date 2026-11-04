@@ -33,7 +33,7 @@ export function Toolbox() {
       <Container>
         <h2
           id="toolbox-heading"
-          className="font-display text-center text-[44px] leading-tight font-semibold"
+          className="reveal font-display text-center text-[44px] leading-tight font-semibold"
         >
           {toolboxCopy.heading}
         </h2>

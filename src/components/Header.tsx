@@ -30,7 +30,7 @@ export function Header() {
               <Link
                 to="/"
                 hash={site.nav.cta.href.replace('#', '')}
-                className="bg-marigold text-plum inline-block rounded-full px-5 py-1 font-medium"
+                className="wiggle bg-marigold text-plum inline-block rounded-full px-5 py-1 font-medium"
               >
                 {site.nav.cta.label}
               </Link>

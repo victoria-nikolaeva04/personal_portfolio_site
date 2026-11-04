@@ -25,6 +25,12 @@
     scroll-padding-top: 6rem;
   }
 
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
   html,
   body,
   #app {
@@ -259,6 +265,61 @@
   }
 }
 
+/* Scroll-driven draw and grow. Parts of an SVG are not CSS boxes, so the
+   <svg> declares the timeline (`view-scope`) and its children follow it. */
+@keyframes grow {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Reveals a stretched vine from the top down. Used instead of `draw-scroll`
+   where the stroke is non-scaling, which dash drawing does not support. */
+@keyframes wipe {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+
+@utility wipe-scroll {
+  @supports (animation-timeline: view()) {
+    animation: wipe linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 55%;
+  }
+}
+
+@utility view-scope {
+  @supports (animation-timeline: view()) {
+    view-timeline: --scope block;
+  }
+}
+
+@utility draw-scroll {
+  @supports (animation-timeline: view()) {
+    stroke-dasharray: 1;
+    animation: draw linear both;
+    animation-timeline: --scope;
+    animation-range: entry 0% cover 55%;
+  }
+}
+
+@utility grow-scroll {
+  transform-origin: bottom center;
+  transform-box: fill-box;
+  @supports (animation-timeline: view()) {
+    animation: grow linear both;
+    animation-timeline: --scope;
+    animation-range: entry 0% cover 40%;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -284,4 +345,77 @@
 
 @utility crawl {
   animation: crawl 60s linear infinite;
+}
+
+@keyframes bloom {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* A watering-can tip: lean forward, hold while pouring, then settle. */
+@keyframes tip {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  30%,
+  70% {
+    transform: rotate(-18deg);
+  }
+}
+
+/* Three drops fall during the held part of `tip` (same 4s cycle). */
+@keyframes drip {
+  0%,
+  32%,
+  100% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  34% {
+    opacity: 0.95;
+  }
+  44% {
+    transform: translateY(38px);
+    opacity: 0;
+  }
+  44.1% {
+    transform: translateY(0);
+  }
+  46% {
+    opacity: 0.95;
+  }
+  56% {
+    transform: translateY(38px);
+    opacity: 0;
+  }
+  56.1% {
+    transform: translateY(0);
+  }
+  58% {
+    opacity: 0.95;
+  }
+  68% {
+    transform: translateY(38px);
+    opacity: 0;
+  }
+}
+
+/* Staggered entrance: set `animation-delay` per item (e.g. index * 90ms). */
+@utility bloom {
+  animation: bloom 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@utility tip {
+  animation: tip 4s ease-in-out infinite;
+}
+
+@utility drip {
+  animation: drip 4s ease-in infinite;
 }

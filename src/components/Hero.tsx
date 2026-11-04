@@ -1,7 +1,5 @@
 import { Container } from '#/components/Container'
-import { HangingPlant } from '#/components/plants/HangingPlant'
 import { Leaf } from '#/components/plants/Leaf'
-import { PottedPlant } from '#/components/plants/PottedPlant'
 import { TypingLine } from '#/components/TypingLine'
 import { site } from '#/content/site'
 
@@ -43,22 +41,50 @@ const pollen = [
     color: 'bg-matcha',
     left: '42%',
     bottom: '38%',
-    delay: '2.3s',
+    delay: '1.1s',
     sway: '-10px',
   },
   {
     color: 'bg-marigold',
     left: '60%',
     bottom: '30%',
-    delay: '4.6s',
+    delay: '2.2s',
     sway: '12px',
   },
   {
     color: 'bg-matcha',
     left: '70%',
     bottom: '40%',
-    delay: '6.9s',
+    delay: '3.4s',
     sway: '-14px',
+  },
+  {
+    color: 'bg-marigold',
+    left: '24%',
+    bottom: '40%',
+    delay: '4.5s',
+    sway: '10px',
+  },
+  {
+    color: 'bg-matcha',
+    left: '52%',
+    bottom: '26%',
+    delay: '5.6s',
+    sway: '-12px',
+  },
+  {
+    color: 'bg-marigold',
+    left: '66%',
+    bottom: '22%',
+    delay: '6.8s',
+    sway: '9px',
+  },
+  {
+    color: 'bg-matcha',
+    left: '36%',
+    bottom: '22%',
+    delay: '7.9s',
+    sway: '-9px',
   },
 ]
 
@@ -94,33 +120,6 @@ export function Hero() {
     >
       <GreenhouseWindow />
       <PollenDots />
-      <HangingPlant
-        size={110}
-        potColor="marigold"
-        rimColor="plum"
-        className="pointer-events-none absolute top-0 left-1 hidden sm:block"
-      />
-      <HangingPlant
-        size={110}
-        potColor="plum"
-        rimColor="marigold"
-        leafClassNames={['sway-3', 'swing-3', 'swing', 'swing-2']}
-        className="pointer-events-none absolute top-0 right-1 hidden sm:block"
-      />
-      <PottedPlant
-        size={96}
-        variant="snake"
-        potColor="marigold"
-        rimColor="plum"
-        className="pointer-events-none absolute bottom-[3px] left-1 h-auto w-16 md:left-1/2 md:w-24 md:-translate-x-[calc(100%+200px)]"
-      />
-      <PottedPlant
-        size={96}
-        variant="flowers"
-        potColor="plum"
-        rimColor="marigold"
-        className="pointer-events-none absolute right-1 bottom-[3px] h-auto w-16 md:right-auto md:left-1/2 md:w-24 md:translate-x-[200px]"
-      />
       <Container className="relative z-10 flex flex-col items-center">
         <div className="relative">
           <Leaf
@@ -171,13 +170,13 @@ export function Hero() {
         <div className="mt-8 flex flex-wrap justify-center gap-4">
           <a
             href={hero.primaryCta.href}
-            className="bg-plum text-cream rounded-full px-6 py-3 font-medium"
+            className="lift bg-plum text-cream rounded-full px-6 py-3 font-medium"
           >
             {hero.primaryCta.label}
           </a>
           <a
             href={hero.secondaryCta.href}
-            className="border-plum text-plum rounded-full border-2 px-6 py-3 font-medium"
+            className="lift border-plum text-plum rounded-full border-2 px-6 py-3 font-medium"
           >
             {hero.secondaryCta.label}
           </a>

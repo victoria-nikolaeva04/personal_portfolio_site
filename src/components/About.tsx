@@ -33,7 +33,7 @@ export function About({ notes }: { notes: Note[] }) {
       <WavyBand className="h-3" />
       <Container>
         <div className="grid gap-12 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16">
-          <div>
+          <div className="reveal">
             <h2
               id="about-heading"
               className="font-hand text-plum-soft text-3xl"
@@ -71,8 +71,25 @@ export function About({ notes }: { notes: Note[] }) {
 
           <div
             id="notes"
-            className="border-matcha border-t-2 border-dashed pt-8 lg:border-t-0 lg:border-l-2 lg:pt-0 lg:pl-12"
+            className="reveal border-matcha relative border-t-2 border-dashed pt-8 lg:border-t-0 lg:pt-0 lg:pl-12"
           >
+            <svg
+              viewBox="0 0 12 100"
+              preserveAspectRatio="none"
+              className="wipe-scroll pointer-events-none absolute top-0 left-0 hidden h-full w-3 lg:block"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M6 0C11 8 1 17 6 25S1 42 6 50S11 67 6 75S1 92 6 100"
+                pathLength={1}
+                className="stroke-matcha"
+                fill="none"
+                strokeWidth="2"
+                strokeLinecap="round"
+                vectorEffect="non-scaling-stroke"
+              />
+            </svg>
             <h2 className="font-display flex items-center gap-3 text-[32px] leading-tight font-semibold">
               <PencilIcon />
               {about.notesHeading}

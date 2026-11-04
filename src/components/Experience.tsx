@@ -29,7 +29,7 @@ function Vine() {
     <svg
       viewBox="0 0 24 100"
       preserveAspectRatio="none"
-      className="pointer-events-none absolute top-0 left-0 h-full w-6"
+      className="wipe-scroll pointer-events-none absolute top-0 left-0 h-full w-6"
       aria-hidden="true"
       focusable="false"
     >
@@ -60,7 +60,7 @@ export function Experience() {
           <div className="flex flex-wrap items-end gap-4">
             <h2
               id="experience-heading"
-              className="font-display text-[44px] leading-tight font-semibold"
+              className="reveal font-display text-[44px] leading-tight font-semibold"
             >
               {experience.heading}
             </h2>
@@ -107,7 +107,7 @@ export function Experience() {
             id="resume"
             href={experience.resumeHref}
             download
-            className="bg-plum text-cream mt-6 inline-flex items-center gap-2 rounded-full px-6 py-3 font-medium"
+            className="lift bg-plum text-cream mt-6 inline-flex items-center gap-2 rounded-full px-6 py-3 font-medium"
           >
             <DownloadIcon />
             {experience.resumeLabel}
@@ -118,11 +118,14 @@ export function Experience() {
           <Vine />
           <ol className="space-y-5 pl-12">
             {jobs.map((job, jobIndex) => (
-              <li key={`${job.company}-${jobIndex}`} className="relative">
-                <span className="bg-cream border-moss absolute top-4 -left-[54px] flex h-9 w-9 items-center justify-center rounded-full border-2">
-                  <Sprout size={24} />
+              <li
+                key={`${job.company}-${jobIndex}`}
+                className="reveal relative"
+              >
+                <span className="view-scope bg-cream border-moss absolute top-4 -left-[54px] flex h-9 w-9 items-center justify-center rounded-full border-2">
+                  <Sprout size={24} className="grow-scroll" />
                 </span>
-                <article className="bg-paper border-plum rounded-[26px] border-2 p-5">
+                <article className="lift bg-paper border-plum rounded-[26px] border-2 p-5">
                   <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
                     <h3 className="font-display text-[25px] leading-tight font-semibold">
                       {job.role}

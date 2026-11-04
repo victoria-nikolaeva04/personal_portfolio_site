@@ -1,6 +1,7 @@
-import { Link } from '@tanstack/react-router'
+import { Link, useSearch } from '@tanstack/react-router'
 import { areaBandClass } from '#/components/areaColors'
 import { Container } from '#/components/Container'
+import { Leaf } from '#/components/plants/Leaf'
 import { PottedPlant } from '#/components/plants/PottedPlant'
 import { site } from '#/content/site'
 import type { Project } from '#/content/site'
@@ -44,71 +45,88 @@ function ExternalLinkIcon() {
 const iconLinkClass =
   'text-plum hover:bg-matcha-soft inline-flex h-10 w-10 items-center justify-center rounded-full'
 
-function ProjectCard({ project }: { project: Project }) {
+function ProjectCard({ project, index }: { project: Project; index: number }) {
   const { projectsCopy } = site
 
   return (
-    <article className="bg-paper border-plum flex flex-col overflow-hidden rounded-[28px] border-2">
-      <div
-        className={`${areaBandClass[project.areas[0]]} flex h-[200px] items-center justify-center p-5`}
-      >
-        {project.thumbnail && (
-          <img
-            src={project.thumbnail}
-            alt={project.thumbnailAlt}
-            className="h-full w-full rounded-lg object-cover object-top"
+    // The bloom wrapper animates `transform`, so `lift` lives on the card.
+    <div className="bloom" style={{ animationDelay: `${index * 90}ms` }}>
+      <article className="lift group bg-paper border-plum flex h-full flex-col overflow-hidden rounded-[28px] border-2">
+        <div
+          className={`${areaBandClass[project.areas[0]]} relative flex h-[200px] items-center justify-center p-5`}
+        >
+          <Leaf
+            size={22}
+            color="matcha-soft"
+            className="group-hover:sway pointer-events-none absolute bottom-2 left-2 z-10 -rotate-[25deg]"
           />
-        )}
-      </div>
-      <div className="flex flex-1 flex-col gap-3 p-6">
-        <h3 className="font-display text-2xl leading-tight font-semibold">
-          {project.title}
-        </h3>
-        <p>{project.description}</p>
-        <p className="text-plum-soft text-sm">
-          <span className="font-medium">{projectsCopy.stackLabel}:</span>{' '}
-          {project.stack.join(', ')}
-        </p>
-        <div className="mt-auto flex items-center justify-between gap-3 pt-2">
-          <Link
-            to="/projects/$slug"
-            params={{ slug: project.slug }}
-            className="text-moss font-medium"
-          >
-            {projectsCopy.caseStudyLabel}
-          </Link>
-          <div className="ml-auto flex items-center gap-1">
-            {project.github && (
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${projectsCopy.githubLabel}: ${project.title}`}
-                className={iconLinkClass}
-              >
-                <GitHubIcon />
-              </a>
-            )}
-            {project.liveUrl && (
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${projectsCopy.liveLabel}: ${project.title}`}
-                className={iconLinkClass}
-              >
-                <ExternalLinkIcon />
-              </a>
-            )}
+          <Leaf
+            size={16}
+            color="cream"
+            className="group-hover:sway-2 pointer-events-none absolute right-2 bottom-2 z-10 rotate-[30deg]"
+          />
+          {project.thumbnail && (
+            <img
+              src={project.thumbnail}
+              alt={project.thumbnailAlt}
+              className="h-full w-full rounded-lg object-cover object-top"
+            />
+          )}
+        </div>
+        <div className="flex flex-1 flex-col gap-3 p-6">
+          <h3 className="font-display text-2xl leading-tight font-semibold">
+            {project.title}
+          </h3>
+          <p>{project.description}</p>
+          <p className="text-plum-soft text-sm">
+            <span className="font-medium">{projectsCopy.stackLabel}:</span>{' '}
+            {project.stack.join(', ')}
+          </p>
+          <div className="mt-auto flex items-center justify-between gap-3 pt-2">
+            <Link
+              to="/projects/$slug"
+              params={{ slug: project.slug }}
+              className="text-moss font-medium"
+            >
+              {projectsCopy.caseStudyLabel}
+            </Link>
+            <div className="ml-auto flex items-center gap-1">
+              {project.github && (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${projectsCopy.githubLabel}: ${project.title}`}
+                  className={iconLinkClass}
+                >
+                  <GitHubIcon />
+                </a>
+              )}
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${projectsCopy.liveLabel}: ${project.title}`}
+                  className={iconLinkClass}
+                >
+                  <ExternalLinkIcon />
+                </a>
+              )}
+            </div>
           </div>
         </div>
-      </div>
-    </article>
+      </article>
+    </div>
   )
 }
 
 export function Projects() {
   const { projectsCopy, projects } = site
+  const { area } = useSearch({ from: '/' })
+  const visible = area
+    ? projects.filter((project) => project.areas.includes(area))
+    : projects
 
   return (
     <section id="work" aria-labelledby="work-heading" className="py-20">
@@ -116,7 +134,7 @@ export function Projects() {
         <div className="flex flex-wrap items-end justify-center gap-4">
           <h2
             id="work-heading"
-            className="font-display text-[44px] leading-tight font-semibold"
+            className="reveal font-display text-[44px] leading-tight font-semibold"
           >
             {projectsCopy.heading}
           </h2>
@@ -129,10 +147,13 @@ export function Projects() {
           />
         </div>
 
-        {projects.length > 0 ? (
-          <div className="mt-10 grid grid-cols-[repeat(auto-fill,minmax(min(340px,100%),1fr))] gap-6">
-            {projects.map((project) => (
-              <ProjectCard key={project.slug} project={project} />
+        {visible.length > 0 ? (
+          <div
+            key={area ?? 'all'}
+            className="mt-10 grid grid-cols-[repeat(auto-fill,minmax(min(340px,100%),1fr))] gap-6"
+          >
+            {visible.map((project, index) => (
+              <ProjectCard key={project.slug} project={project} index={index} />
             ))}
           </div>
         ) : (

@@ -24,7 +24,7 @@ function TopWave() {
     <svg
       viewBox={WAVE_VIEWBOX}
       preserveAspectRatio="xMidYMax slice"
-      className={`${waveClass} bottom-full`}
+      className={`${waveClass} view-scope bottom-full`}
       aria-hidden="true"
       focusable="false"
     >
@@ -33,6 +33,7 @@ function TopWave() {
         <path
           d={WAVE_CURVE}
           pathLength={1}
+          className="draw-scroll"
           fill="none"
           stroke="#4F5E2E"
           strokeWidth="3"
