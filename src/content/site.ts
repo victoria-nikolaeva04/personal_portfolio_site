@@ -114,8 +114,14 @@ export type ContactCopy = {
   roles: string
 }
 
+export type ToolboxCopy = {
+  heading: string
+  note: string
+}
+
 export type SiteContent = {
   name: string
+  toolboxCopy: ToolboxCopy
   contactCopy: ContactCopy
   about: AboutCopy
   projectsCopy: ProjectsCopy
@@ -146,6 +152,10 @@ export type SiteContent = {
 export const site: SiteContent = {
   name: 'Victoria Nikolaeva',
   skipLink: 'Skip to content',
+  toolboxCopy: {
+    heading: 'Skills',
+    note: "What's on the bench?",
+  },
   contactCopy: {
     note: 'say hello',
     heading: "Let's grow something together!",
@@ -356,9 +366,16 @@ export const site: SiteContent = {
   funFact: 'Whenever I need to focus, I like to wear a crown ',
 
   toolbox: [
-    { name: '[Group 1]', items: ['[Item]', '[Item]', '[Item]'] },
-    { name: '[Group 2]', items: ['[Item]', '[Item]', '[Item]'] },
-    { name: '[Group 3]', items: ['[Item]', '[Item]', '[Item]'] },
+    { name: 'Languages', items: ['Python', 'TypeScript', 'Swift', 'HTML', 'CSS'] },
+    {
+      name: 'Frameworks & Libraries',
+      items: ['React', 'Python Panda', 'Python Matplotlib'],
+    },
+    { name: 'Tools & DevOps', items: ['VsCode', 'Agile Methodology', 'Scrum Methodology'] },
+    {
+      name: 'Design & Collaboration',
+      items: ['Figma', 'Wireframing', 'Teamwork'],
+    },
   ],
 
   contact: [
