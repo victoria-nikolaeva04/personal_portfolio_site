@@ -61,7 +61,6 @@ export type ContactLink = {
 
 export type SectionHeadings = {
   workAreas: string
-  contact: string
 }
 
 export type NavLink = {
@@ -109,8 +108,15 @@ export type AboutCopy = {
   notesLink: NavLink
 }
 
+export type ContactCopy = {
+  note: string
+  heading: string
+  roles: string
+}
+
 export type SiteContent = {
   name: string
+  contactCopy: ContactCopy
   about: AboutCopy
   projectsCopy: ProjectsCopy
   experience: ExperienceCopy
@@ -140,6 +146,12 @@ export type SiteContent = {
 export const site: SiteContent = {
   name: 'Victoria Nikolaeva',
   skipLink: 'Skip to content',
+  contactCopy: {
+    note: 'say hello',
+    heading: "Let's grow something together!",
+    roles:
+      'Looking for a girl like me! Reach out whether you want to talk about projects, opportunities, or just saying hi!',
+  },
   about: {
     label: 'Off the Clock',
     intro:
@@ -201,7 +213,6 @@ export const site: SiteContent = {
   },
   sections: {
     workAreas: '[Work areas]',
-    contact: '[Contact]',
   },
   statusLine: 'Open to Work, Nov. 2026',
 
@@ -328,7 +339,11 @@ export const site: SiteContent = {
 
   fieldNotes: [
     { date: '2026-11-03', tag: 'Work', title: 'Working on this portfolio!' },
-    { date: '2026-10-29', tag: 'Adventure', title: "Went to Adobe's ColdFusion Confrence!" },
+    {
+      date: '2026-10-29',
+      tag: 'Adventure',
+      title: "Went to Adobe's ColdFusion Confrence!",
+    },
     { date: '2026-10-28', tag: 'Work', title: 'Finish up Arcana Noctis!' },
   ],
 
@@ -347,8 +362,8 @@ export const site: SiteContent = {
   ],
 
   contact: [
-    { label: 'Email', href: '[mailto:vnikolaeva04@gmail.com]' },
-    { label: 'LinkedIn', href: '[https://linkedin.com/in/victoria-nikolaeva04]' },
-    { label: 'GitHub', href: '[https://github.com/victoria-nikolaeva04]' },
+    { label: 'Email me', href: 'mailto:vnikolaeva04@gmail.com' },
+    { label: 'LinkedIn', href: 'https://linkedin.com/in/victoria-nikolaeva04' },
+    { label: 'GitHub', href: 'https://github.com/victoria-nikolaeva04' },
   ],
 }

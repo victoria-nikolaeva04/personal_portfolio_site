@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { About } from '#/components/About'
+import { Contact } from '#/components/Contact'
 import { Experience } from '#/components/Experience'
 import { Hero } from '#/components/Hero'
 import { Projects } from '#/components/Projects'
@@ -17,7 +18,7 @@ function Home() {
         <Experience />
         <Projects />
         <About />
-        <Section id="contact" heading={site.sections.contact} />
+        <Contact />
       </main>
     </>
   )
