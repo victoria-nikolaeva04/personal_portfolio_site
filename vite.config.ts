@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite'
+import mdx from '@mdx-js/rollup'
 import { devtools } from '@tanstack/devtools-vite'
 
 import { tanstackRouter } from '@tanstack/router-plugin/vite'
@@ -12,7 +13,8 @@ const config = defineConfig({
     devtools(),
     tailwindcss(),
     tanstackRouter({ target: 'react', autoCodeSplitting: true }),
-    viteReact(),
+    { enforce: 'pre', ...mdx({ providerImportSource: '@mdx-js/react' }) },
+    viteReact({ include: /\.(mdx|js|jsx|ts|tsx)$/ }),
   ],
 })
 

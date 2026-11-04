@@ -26,6 +26,11 @@ export type Education = {
   coursework: string[]
 }
 
+export type ProjectImage = {
+  src: string
+  alt: string
+}
+
 export type Project = {
   slug: string
   title: string
@@ -34,6 +39,7 @@ export type Project = {
   stack: string[]
   thumbnail: string
   thumbnailAlt: string
+  images?: ProjectImage[]
   github?: string
   liveUrl?: string
 }
@@ -93,7 +99,6 @@ export type ProjectsCopy = {
   heading: string
   stackLabel: string
   caseStudyLabel: string
-  caseStudyHref: string
   githubLabel: string
   liveLabel: string
   emptyMessage: string
@@ -119,8 +124,25 @@ export type ToolboxCopy = {
   note: string
 }
 
+export type CaseStudyCopy = {
+  roleLabel: string
+  teamLabel: string
+  timelineLabel: string
+  toolsLabel: string
+  backLabel: string
+  galleryLabel: string
+  backToProjectsLabel: string
+  previousLabel: string
+  nextLabel: string
+  comingSoon: string
+  notFoundNote: string
+  notFoundHeading: string
+  notFoundBody: string
+}
+
 export type SiteContent = {
   name: string
+  caseStudyCopy: CaseStudyCopy
   toolboxCopy: ToolboxCopy
   contactCopy: ContactCopy
   about: AboutCopy
@@ -152,6 +174,23 @@ export type SiteContent = {
 export const site: SiteContent = {
   name: 'Victoria Nikolaeva',
   skipLink: 'Skip to content',
+  caseStudyCopy: {
+    roleLabel: 'Role',
+    teamLabel: 'Team',
+    timelineLabel: 'Timeline',
+    toolsLabel: 'Tools',
+    backLabel: '← Back to projects',
+    galleryLabel: 'Project screenshots',
+    backToProjectsLabel: 'Back to all projects',
+    previousLabel: '← Previous project',
+    nextLabel: 'Next project →',
+    comingSoon:
+      'The full write-up for this project is still growing. Check back soon.',
+    notFoundNote: 'hmm, nothing growing here',
+    notFoundHeading: "That Project doesn't exist (yet).",
+    notFoundBody:
+      'The link may be out of date, or this project does not have a write-up yet. The projects list has everything that is ready to read.',
+  },
   toolboxCopy: {
     heading: 'Skills',
     note: "What's on the bench?",
@@ -175,7 +214,6 @@ export const site: SiteContent = {
     heading: 'Projects',
     stackLabel: 'Stack',
     caseStudyLabel: 'Learn More →',
-    caseStudyHref: '#',
     githubLabel: 'View source on GitHub',
     liveLabel: 'Visit the live site',
     emptyMessage: 'No projects yet',
@@ -217,7 +255,7 @@ export const site: SiteContent = {
       { label: 'Projects', href: '#work' },
       // { label: 'Field notes', href: '#notes' },
       { label: 'About', href: '#about' },
-      { label: 'Resume', href: '#resume' },
+      // { label: 'Resume', href: '#resume' },
     ],
     cta: { label: 'Say hi', href: '#contact' },
   },
@@ -313,7 +351,7 @@ export const site: SiteContent = {
 
   projects: [
     {
-      slug: 'Arcana Noctis',
+      slug: 'arcana-noctis',
       title: 'Arcana Noctis',
       areas: ['build'],
       description: '[What the project is and why it matters.]',
@@ -324,7 +362,7 @@ export const site: SiteContent = {
       liveUrl: '#',
     },
     {
-      slug: 'Soundmate',
+      slug: 'soundmate',
       title: 'Soundmate',
       areas: ['think', 'design'],
       description: '[What the project is and why it matters.]',
@@ -335,9 +373,31 @@ export const site: SiteContent = {
       liveUrl: '#',
     },
     {
-      slug: 'AI Career Quiz',
-      title: 'AI Career Quiz',
+      slug: 'tcgspot',
+      title: 'TCGSpot',
       areas: ['lead'],
+      description: '[What the project is and why it matters.]',
+      stack: ['[Tech A]', '[Tech B]'],
+      thumbnail: '',
+      thumbnailAlt: '[Screenshot of the project]',
+      github: '#',
+      liveUrl: '#',
+    },
+    {
+      slug: 'dovechat',
+      title: 'DoveChat',
+      areas: ['design'],
+      description: '[What the project is and why it matters.]',
+      stack: ['[Tech A]', '[Tech B]'],
+      thumbnail: '',
+      thumbnailAlt: '[Screenshot of the project]',
+      github: '#',
+      liveUrl: '#',
+    },
+        {
+      slug: 'ai-career-quiz',
+      title: 'AI Career Quiz',
+      areas: ['build'],
       description: '[What the project is and why it matters.]',
       stack: ['[Tech A]', '[Tech B]'],
       thumbnail: '',
@@ -366,12 +426,18 @@ export const site: SiteContent = {
   funFact: 'Whenever I need to focus, I like to wear a crown ',
 
   toolbox: [
-    { name: 'Languages', items: ['Python', 'TypeScript', 'Swift', 'HTML', 'CSS'] },
+    {
+      name: 'Languages',
+      items: ['Python', 'TypeScript', 'Swift', 'HTML', 'CSS'],
+    },
     {
       name: 'Frameworks & Libraries',
       items: ['React', 'Python Panda', 'Python Matplotlib'],
     },
-    { name: 'Tools & DevOps', items: ['VSCode', 'Agile Methodology', 'Scrum Methodology'] },
+    {
+      name: 'Tools & DevOps',
+      items: ['VSCode', 'Agile Methodology', 'Scrum Methodology'],
+    },
     {
       name: 'Design & Collaboration',
       items: ['Figma', 'Wireframing', 'Teamwork'],

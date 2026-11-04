@@ -64,7 +64,7 @@ export function Toolbox() {
                   variant={plantVariants[groupIndex % plantVariants.length]}
                   potColor={groupIndex % 2 === 0 ? 'marigold' : 'plum'}
                   rimColor={groupIndex % 2 === 0 ? 'plum' : 'marigold'}
-                  className="shrink-0"
+                  className="mt-4 shrink-0"
                 />
               </div>
             ))}

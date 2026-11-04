@@ -1,14 +1,9 @@
+import { Link } from '@tanstack/react-router'
+import { areaBandClass } from '#/components/areaColors'
 import { Container } from '#/components/Container'
 import { PottedPlant } from '#/components/plants/PottedPlant'
 import { site } from '#/content/site'
-import type { AreaId, Project } from '#/content/site'
-
-const bandClass: Record<AreaId, string> = {
-  build: 'bg-matcha',
-  think: 'bg-plum',
-  design: 'bg-marigold',
-  lead: 'bg-moss',
-}
+import type { Project } from '#/content/site'
 
 function GitHubIcon() {
   return (
@@ -55,7 +50,7 @@ function ProjectCard({ project }: { project: Project }) {
   return (
     <article className="bg-paper border-plum flex flex-col overflow-hidden rounded-[28px] border-2">
       <div
-        className={`${bandClass[project.areas[0]]} flex h-[200px] items-center justify-center p-5`}
+        className={`${areaBandClass[project.areas[0]]} flex h-[200px] items-center justify-center p-5`}
       >
         {project.thumbnail && (
           <img
@@ -75,13 +70,14 @@ function ProjectCard({ project }: { project: Project }) {
           {project.stack.join(', ')}
         </p>
         <div className="mt-auto flex items-center justify-between gap-3 pt-2">
-          <a
-            href={projectsCopy.caseStudyHref}
+          <Link
+            to="/projects/$slug"
+            params={{ slug: project.slug }}
             className="text-moss font-medium"
           >
             {projectsCopy.caseStudyLabel}
-          </a>
-          <div className="flex items-center gap-1">
+          </Link>
+          <div className="ml-auto flex items-center gap-1">
             {project.github && (
               <a
                 href={project.github}

@@ -66,17 +66,9 @@ export function Experience() {
             </h2>
             <PottedPlant size={56} variant="leafy" className="shrink-0" />
           </div>
-          <p className="text-plum-soft mt-4 text-lg">{experience.intro}</p>
-          <a
-            id="resume"
-            href={experience.resumeHref}
-            download
-            className="bg-plum text-cream mt-5 inline-flex items-center gap-2 rounded-full px-6 py-3 font-medium"
-          >
-            <DownloadIcon />
-            {experience.resumeLabel}
-          </a>
-
+          <p className="font-hand text-plum-soft mt-4 text-2xl">
+            {experience.intro}
+          </p>
           {education.map((item, itemIndex) => (
             <div
               key={`${item.school}-${itemIndex}`}
@@ -110,6 +102,16 @@ export function Experience() {
               </ul>
             </div>
           ))}
+
+          <a
+            id="resume"
+            href={experience.resumeHref}
+            download
+            className="bg-plum text-cream mt-6 inline-flex items-center gap-2 rounded-full px-6 py-3 font-medium"
+          >
+            <DownloadIcon />
+            {experience.resumeLabel}
+          </a>
         </div>
 
         <div className="relative">
