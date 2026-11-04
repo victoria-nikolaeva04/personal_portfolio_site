@@ -1,4 +1,6 @@
 import { Container } from '#/components/Container'
+import { PottedPlant } from '#/components/plants/PottedPlant'
+import type { PottedPlantVariant } from '#/components/plants/PottedPlant'
 import { site } from '#/content/site'
 
 function Bracket({ className = '' }: { className?: string }) {
@@ -15,6 +17,13 @@ function Bracket({ className = '' }: { className?: string }) {
     </svg>
   )
 }
+
+const plantVariants: PottedPlantVariant[] = [
+  'leafy',
+  'snake',
+  'flowers',
+  'tree',
+]
 
 export function Toolbox() {
   const { toolboxCopy, toolbox } = site
@@ -34,7 +43,7 @@ export function Toolbox() {
 
         <div className="relative mt-12">
           <div className="grid grid-cols-2 items-end gap-x-6 gap-y-10 lg:grid-cols-4">
-            {toolbox.map((group) => (
+            {toolbox.map((group, groupIndex) => (
               <div
                 key={group.name}
                 className="border-plum flex flex-col items-center justify-end border-b-[6px] text-center lg:border-b-0"
@@ -50,8 +59,13 @@ export function Toolbox() {
                   ))}
                 </ul>
                 <p className="font-hand mt-4 text-3xl">{group.name}</p>
-                {/* Reserved space for the potted plant */}
-                <div className="h-[70px] w-16 shrink-0" aria-hidden="true" />
+                <PottedPlant
+                  size={64}
+                  variant={plantVariants[groupIndex % plantVariants.length]}
+                  potColor={groupIndex % 2 === 0 ? 'marigold' : 'plum'}
+                  rimColor={groupIndex % 2 === 0 ? 'plum' : 'marigold'}
+                  className="shrink-0"
+                />
               </div>
             ))}
           </div>

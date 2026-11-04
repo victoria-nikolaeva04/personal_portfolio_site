@@ -1,4 +1,6 @@
 import { Container } from '#/components/Container'
+import { HangingPlant } from '#/components/plants/HangingPlant'
+import { PottedPlant } from '#/components/plants/PottedPlant'
 import { site } from '#/content/site'
 
 function GreenhouseWindow() {
@@ -34,10 +36,36 @@ export function Hero() {
     <section
       id="top"
       aria-labelledby="top-heading"
-      className="relative flex min-h-[600px] items-center justify-center overflow-hidden pt-16 pb-24 text-center"
+      className="relative flex min-h-[600px] items-center justify-center overflow-hidden pt-16 pb-36 text-center md:pb-24"
     >
       <GreenhouseWindow />
-      <Container className="relative flex flex-col items-center">
+      <HangingPlant
+        size={110}
+        potColor="marigold"
+        rimColor="plum"
+        className="pointer-events-none absolute top-0 left-1 hidden sm:block"
+      />
+      <HangingPlant
+        size={110}
+        potColor="plum"
+        rimColor="marigold"
+        className="pointer-events-none absolute top-0 right-1 hidden sm:block"
+      />
+      <PottedPlant
+        size={96}
+        variant="snake"
+        potColor="marigold"
+        rimColor="plum"
+        className="pointer-events-none absolute bottom-[3px] left-1 h-auto w-16 md:left-1/2 md:w-24 md:-translate-x-[calc(100%+200px)]"
+      />
+      <PottedPlant
+        size={96}
+        variant="flowers"
+        potColor="plum"
+        rimColor="marigold"
+        className="pointer-events-none absolute right-1 bottom-[3px] h-auto w-16 md:right-auto md:left-1/2 md:w-24 md:translate-x-[200px]"
+      />
+      <Container className="relative z-10 flex flex-col items-center">
         <img
           src={hero.photo}
           alt={hero.photoAlt}
@@ -45,7 +73,7 @@ export function Hero() {
           height={150}
           className="bg-matcha border-plum h-[150px] w-[150px] rounded-full border-[3px] object-cover"
         />
-       {/*  <p className="bg-paper border-matcha mt-6 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-sm">
+        {/*  <p className="bg-paper border-matcha mt-6 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-sm">
           <span
             className="bg-moss h-2.5 w-2.5 rounded-full"
             aria-hidden="true"

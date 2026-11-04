@@ -1,4 +1,5 @@
 import { Container } from '#/components/Container'
+import { PottedPlant } from '#/components/plants/PottedPlant'
 import { site } from '#/content/site'
 import type { AreaId, Project } from '#/content/site'
 
@@ -116,12 +117,21 @@ export function Projects() {
   return (
     <section id="work" aria-labelledby="work-heading" className="py-20">
       <Container>
-        <h2
-          id="work-heading"
-          className="font-display text-center text-[44px] leading-tight font-semibold"
-        >
-          {projectsCopy.heading}
-        </h2>
+        <div className="flex flex-wrap items-end justify-center gap-4">
+          <h2
+            id="work-heading"
+            className="font-display text-[44px] leading-tight font-semibold"
+          >
+            {projectsCopy.heading}
+          </h2>
+          <PottedPlant
+            size={56}
+            variant="flowers"
+            potColor="plum"
+            rimColor="marigold"
+            className="shrink-0"
+          />
+        </div>
 
         {projects.length > 0 ? (
           <div className="mt-10 grid grid-cols-[repeat(auto-fill,minmax(min(340px,100%),1fr))] gap-6">

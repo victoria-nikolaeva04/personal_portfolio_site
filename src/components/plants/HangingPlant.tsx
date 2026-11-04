@@ -1,5 +1,10 @@
-import { leafGroupStyle } from '#/components/plants/palette'
-import type { PlantProps } from '#/components/plants/palette'
+import { fillClass, leafGroupStyle } from '#/components/plants/palette'
+import type { PaletteColor, PlantProps } from '#/components/plants/palette'
+
+type HangingPlantProps = PlantProps & {
+  potColor?: PaletteColor
+  rimColor?: 'plum' | 'marigold'
+}
 
 type Vine = {
   path: string
@@ -32,9 +37,11 @@ const vines: Vine[] = [
 
 export function HangingPlant({
   size = 80,
+  potColor = 'marigold',
+  rimColor = 'plum',
   className,
   leafClassNames,
-}: PlantProps) {
+}: HangingPlantProps) {
   return (
     <svg
       width={size}
@@ -76,7 +83,7 @@ export function HangingPlant({
 
       <path
         d="M16 44H64C64 62 54 72 40 72C26 72 16 62 16 44Z"
-        className="fill-marigold"
+        className={fillClass[potColor]}
       />
       <rect
         x="13"
@@ -84,7 +91,7 @@ export function HangingPlant({
         width="54"
         height="9"
         rx="4.5"
-        className="fill-plum"
+        className={fillClass[rimColor]}
       />
 
       {vines.map((vine, index) => (

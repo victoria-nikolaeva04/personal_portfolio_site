@@ -157,7 +157,7 @@ export const site: SiteContent = {
     note: "What's on the bench?",
   },
   contactCopy: {
-    note: 'say hello',
+    note: 'Say Hello!',
     heading: "Let's grow something together!",
     roles:
       'Looking for a girl like me! Reach out whether you want to talk about projects, opportunities, or just saying hi!',

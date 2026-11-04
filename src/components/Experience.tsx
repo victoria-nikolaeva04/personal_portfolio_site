@@ -1,4 +1,5 @@
 import { Container } from '#/components/Container'
+import { PottedPlant } from '#/components/plants/PottedPlant'
 import { Sprout } from '#/components/plants/Sprout'
 import { site } from '#/content/site'
 
@@ -56,12 +57,15 @@ export function Experience() {
     >
       <Container className="grid gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
         <div>
-          <h2
-            id="experience-heading"
-            className="font-display text-[44px] leading-tight font-semibold"
-          >
-            {experience.heading}
-          </h2>
+          <div className="flex flex-wrap items-end gap-4">
+            <h2
+              id="experience-heading"
+              className="font-display text-[44px] leading-tight font-semibold"
+            >
+              {experience.heading}
+            </h2>
+            <PottedPlant size={56} variant="leafy" className="shrink-0" />
+          </div>
           <p className="text-plum-soft mt-4 text-lg">{experience.intro}</p>
           <a
             id="resume"
