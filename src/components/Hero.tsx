@@ -1,5 +1,6 @@
 import { Container } from '#/components/Container'
 import { HangingPlant } from '#/components/plants/HangingPlant'
+import { Leaf } from '#/components/plants/Leaf'
 import { PottedPlant } from '#/components/plants/PottedPlant'
 import { site } from '#/content/site'
 
@@ -66,13 +67,33 @@ export function Hero() {
         className="pointer-events-none absolute right-1 bottom-[3px] h-auto w-16 md:right-auto md:left-1/2 md:w-24 md:translate-x-[200px]"
       />
       <Container className="relative z-10 flex flex-col items-center">
-        <img
-          src={hero.photo}
-          alt={hero.photoAlt}
-          width={150}
-          height={150}
-          className="bg-matcha border-plum h-[150px] w-[150px] rounded-full border-[3px] object-cover"
-        />
+        <div className="relative">
+          <Leaf
+            size={22}
+            className="pointer-events-none absolute top-6 -left-8 -rotate-[50deg]"
+          />
+          <Leaf
+            size={16}
+            color="moss"
+            className="pointer-events-none absolute top-16 -left-9 -rotate-[95deg]"
+          />
+          <img
+            src={hero.photo}
+            alt={hero.photoAlt}
+            width={150}
+            height={150}
+            className="bg-matcha border-plum h-[150px] w-[150px] rounded-full border-[3px] object-cover"
+          />
+          <Leaf
+            size={22}
+            className="pointer-events-none absolute top-6 -right-8 rotate-[50deg]"
+          />
+          <Leaf
+            size={16}
+            color="moss"
+            className="pointer-events-none absolute top-16 -right-9 rotate-[95deg]"
+          />
+        </div>
         {/*  <p className="bg-paper border-matcha mt-6 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-sm">
           <span
             className="bg-moss h-2.5 w-2.5 rounded-full"
