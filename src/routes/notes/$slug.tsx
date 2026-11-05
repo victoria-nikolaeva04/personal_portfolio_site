@@ -16,12 +16,10 @@ export const Route = createFileRoute('/notes/$slug')({
   notFoundComponent: NoteNotFound,
 })
 
-// Faint matcha-soft ruled lines with a marigold margin line, like notebook paper.
-const notebookPaper = {
-  backgroundImage: [
-    'linear-gradient(to right, transparent 47px, var(--color-marigold) 47px, var(--color-marigold) 49px, transparent 49px)',
+// Faint matcha-soft ruled lines across the whole page, like notebook paper.
+const ruledPaper = {
+  backgroundImage:
     'repeating-linear-gradient(to bottom, transparent 0, transparent 31px, var(--color-matcha-soft) 31px, var(--color-matcha-soft) 32px)',
-  ].join(', '),
 }
 
 function NotePage() {
@@ -29,20 +27,22 @@ function NotePage() {
   const { notesCopy } = site
 
   return (
-    <main id="main" className="py-14">
-      <Container>
-        <div className="mx-auto max-w-[680px]">
+    <main id="main" style={ruledPaper} className="bg-paper">
+      <div className="relative mx-auto max-w-[860px] px-5 py-10 sm:px-8 sm:py-14">
+        {/* The marigold margin line, running the full height of the page. */}
+        <span
+          aria-hidden="true"
+          className="bg-marigold absolute inset-y-0 left-[30px] w-0.5 sm:left-[56px]"
+        />
+        <div className="pl-9 sm:pl-[72px]">
           <BackLink to="/notes" search={{}} label={notesCopy.backLabel} />
         </div>
-        <article
-          style={notebookPaper}
-          className="bg-paper border-matcha-soft mx-auto max-w-[680px] rounded-[8px] border-2 py-10 pr-6 pl-[72px] shadow-sm sm:pr-10"
-        >
+        <article className="pl-9 sm:pl-[72px]">
           <p className="font-hand text-moss text-xl">
             {note.date} · {note.tag} · {note.readingMinutes}{' '}
             {notesCopy.minutesSuffix}
           </p>
-          <h1 className="font-display mt-2 text-[clamp(34px,5vw,48px)] leading-[1.1] font-semibold">
+          <h1 className="font-display mt-2 text-[clamp(30px,5vw,48px)] break-words leading-[1.1] font-semibold">
             {note.title}
           </h1>
 
@@ -72,7 +72,7 @@ function NotePage() {
             )}
           </nav>
         </article>
-      </Container>
+      </div>
     </main>
   )
 }

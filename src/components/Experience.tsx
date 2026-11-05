@@ -60,7 +60,7 @@ export function Experience() {
           <div className="flex flex-wrap items-end gap-4">
             <h2
               id="experience-heading"
-              className="reveal font-display text-[44px] leading-tight font-semibold"
+              className="reveal font-display text-[44px] leading-tight max-sm:text-[34px] font-semibold"
             >
               {experience.heading}
             </h2>
@@ -127,7 +127,7 @@ export function Experience() {
                 </span>
                 <article className="lift bg-paper border-plum rounded-[26px] border-2 p-5">
                   <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
-                    <h3 className="font-display text-[25px] leading-tight font-semibold">
+                    <h3 className="font-display text-[25px] leading-tight max-sm:text-[22px] font-semibold">
                       {job.role}
                     </h3>
                     <p className="bg-marigold-soft rounded-full px-3 py-1 text-sm">

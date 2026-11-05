@@ -23,7 +23,7 @@ export function Section({
     <section
       id={id}
       aria-labelledby={headingId}
-      className={`py-20 ${className}`.trim()}
+      className={`py-20 max-sm:py-14 ${className}`.trim()}
     >
       <Container>
         <Heading id={headingId} className="text-4xl font-semibold">

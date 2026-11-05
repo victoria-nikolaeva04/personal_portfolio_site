@@ -71,19 +71,32 @@ export function TypingLine({ lead, phrases, className }: TypingLineProps) {
   return (
     <p className={className}>
       <span className="sr-only">{fullSentence}</span>
-      <span aria-hidden="true">
-        {lead}{' '}
-        <em className="text-moss italic">
-          {reduced ? phrases[0] : phrase.slice(0, length)}
-        </em>
-        {!reduced && (
-          <>
-            <span className="typing-cursor bg-marigold ml-1 inline-block h-[0.9em] w-[3px] translate-y-[0.1em] rounded-full" />
-            <span className="ml-2 inline-block h-7 w-7 align-middle">
-              {finished && <Sprout size={28} className="typing-pop" />}
-            </span>
-          </>
-        )}
+      {/* Every phrase is laid out invisibly in the same grid cell, so the line
+          always reserves the height of the longest one and nothing below it
+          shifts while the text types and deletes. */}
+      <span className="grid" aria-hidden="true">
+        {phrases.map((item) => (
+          <span
+            key={item}
+            className="invisible col-start-1 row-start-1 pr-12 select-none"
+          >
+            {lead} <em className="italic">{item}</em>
+          </span>
+        ))}
+        <span className="col-start-1 row-start-1">
+          {lead}{' '}
+          <em className="text-moss italic">
+            {reduced ? phrases[0] : phrase.slice(0, length)}
+          </em>
+          {!reduced && (
+            <>
+              <span className="typing-cursor bg-marigold ml-1 inline-block h-[0.9em] w-[3px] translate-y-[0.1em] rounded-full" />
+              <span className="ml-2 inline-block h-7 w-7 align-middle">
+                {finished && <Sprout size={28} className="typing-pop" />}
+              </span>
+            </>
+          )}
+        </span>
       </span>
     </p>
   )

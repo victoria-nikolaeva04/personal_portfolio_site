@@ -116,7 +116,7 @@ export function Hero() {
     <section
       id="top"
       aria-labelledby="top-heading"
-      className="relative flex min-h-[600px] items-center justify-center overflow-hidden pt-16 pb-36 text-center md:pb-24"
+      className="relative flex min-h-[600px] items-center justify-center overflow-hidden pt-16 pb-36 text-center max-sm:pt-12 max-sm:pb-32 md:pb-24"
     >
       <GreenhouseWindow />
       <PollenDots />
@@ -157,26 +157,26 @@ export function Hero() {
         </p> */}
         <h1
           id="top-heading"
-          className="font-display mt-6 text-[clamp(48px,6.4vw,88px)] leading-[1.05] font-semibold"
+          className="font-display mt-6 text-[clamp(48px,6.4vw,88px)] max-sm:text-[38px] leading-[1.05] font-semibold"
         >
           {hero.greeting} {site.name}.
         </h1>
         <TypingLine
           lead={hero.lead}
           phrases={hero.phrases}
-          className="font-display mt-2 text-[clamp(28px,3.6vw,48px)] leading-tight"
+          className="font-display mt-2 text-[clamp(28px,3.6vw,48px)] max-sm:text-2xl leading-tight"
         />
         {/* <p className="text-plum-soft mt-4 text-lg">{hero.subtitle}</p> */}
-        <div className="mt-8 flex flex-wrap justify-center gap-4">
+        <div className="mt-8 flex flex-wrap justify-center gap-4 max-sm:gap-3">
           <a
             href={hero.primaryCta.href}
-            className="lift bg-plum text-cream rounded-full px-6 py-3 font-medium"
+            className="lift bg-plum text-cream rounded-full px-6 py-3 font-medium max-sm:px-5"
           >
             {hero.primaryCta.label}
           </a>
           <a
             href={hero.secondaryCta.href}
-            className="lift border-plum text-plum rounded-full border-2 px-6 py-3 font-medium"
+            className="lift border-plum text-plum rounded-full border-2 px-6 py-3 font-medium max-sm:px-5"
           >
             {hero.secondaryCta.label}
           </a>

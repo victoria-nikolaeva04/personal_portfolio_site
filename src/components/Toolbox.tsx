@@ -33,7 +33,7 @@ export function Toolbox() {
       <Container>
         <h2
           id="toolbox-heading"
-          className="reveal font-display text-center text-[44px] leading-tight font-semibold"
+          className="reveal font-display text-center text-[44px] leading-tight max-sm:text-[34px] font-semibold"
         >
           {toolboxCopy.heading}
         </h2>
@@ -42,7 +42,7 @@ export function Toolbox() {
         </p>
 
         <div className="relative mt-12">
-          <div className="grid grid-cols-2 items-end gap-x-6 gap-y-10 lg:grid-cols-4">
+          <div className="grid grid-cols-2 items-end gap-x-6 gap-y-10 max-sm:gap-x-4 lg:grid-cols-4">
             {toolbox.map((group, groupIndex) => (
               <div
                 key={group.name}

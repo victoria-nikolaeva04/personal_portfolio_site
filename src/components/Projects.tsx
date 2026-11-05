@@ -157,7 +157,7 @@ export function Projects() {
         <div className="flex flex-wrap items-end justify-center gap-4">
           <h2
             id="work-heading"
-            className="reveal font-display text-[44px] leading-tight font-semibold"
+            className="reveal font-display text-[44px] leading-tight max-sm:text-[34px] font-semibold"
           >
             {projectsCopy.heading}
           </h2>
