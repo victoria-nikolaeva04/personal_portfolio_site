@@ -19,7 +19,7 @@ export const Route = createFileRoute('/projects/$slug')({
 })
 
 const pillLink =
-  'rounded-full border-2 border-plum px-6 py-3 font-medium text-plum max-sm:flex-1 max-sm:px-3 max-sm:text-center'
+  'rounded-full border-2 border-plum px-6 py-3 text-[15px] font-medium text-plum max-sm:flex-1 max-sm:px-3 max-sm:text-center'
 
 function CaseStudyPage() {
   const { slug, study } = Route.useLoaderData()
@@ -179,7 +179,7 @@ function CaseStudyPage() {
               <Link
                 to="/projects/$slug"
                 params={{ slug: nextSlug }}
-                className="bg-plum text-cream rounded-full px-6 py-3 font-medium max-sm:flex-1 max-sm:px-3 max-sm:text-center"
+                className="bg-plum text-cream border-plum rounded-full border-2 px-6 py-3 text-[15px] font-medium max-sm:flex-1 max-sm:px-3 max-sm:text-center"
               >
                 {caseStudyCopy.nextLabel}
               </Link>
