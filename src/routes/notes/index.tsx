@@ -1,6 +1,7 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
 import { BackLink } from '#/components/BackLink'
 import { Container } from '#/components/Container'
+import { useDocumentTitle } from '#/components/useDocumentTitle'
 import { loadNotes } from '#/content/notes'
 import { site } from '#/content/site'
 
@@ -25,6 +26,7 @@ function NotesPage() {
   const notes = Route.useLoaderData()
   const { tag } = Route.useSearch()
   const { notesCopy } = site
+  useDocumentTitle(notesCopy.heading)
 
   const tags = [...new Set(notes.map((note) => note.tag))].sort()
   const visible = tag ? notes.filter((note) => note.tag === tag) : notes

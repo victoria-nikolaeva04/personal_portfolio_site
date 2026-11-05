@@ -1,4 +1,9 @@
-import { Outlet, createRootRoute } from '@tanstack/react-router'
+import { useEffect, useRef, useState } from 'react'
+import {
+  Outlet,
+  createRootRoute,
+  useRouterState,
+} from '@tanstack/react-router'
 
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
@@ -13,6 +18,41 @@ export const Route = createRootRoute({
   component: RootComponent,
 })
 
+// A single-page app swaps content without a real page load, so screen readers
+// hear nothing. After each navigation, move focus to the new page's <main> and
+// announce its title.
+function RouteAnnouncer() {
+  const pathname = useRouterState({
+    select: (state) => state.resolvedLocation?.pathname,
+  })
+  const previous = useRef<string | undefined>(undefined)
+  const [message, setMessage] = useState('')
+
+  useEffect(() => {
+    if (!pathname) return
+    // The first page load is not a navigation.
+    if (previous.current === undefined) {
+      previous.current = pathname
+      return
+    }
+    if (previous.current === pathname) return
+    previous.current = pathname
+
+    const main = document.getElementById('main')
+    if (main) {
+      main.setAttribute('tabindex', '-1')
+      main.focus({ preventScroll: true })
+    }
+    setMessage(document.title)
+  }, [pathname])
+
+  return (
+    <div role="status" aria-live="polite" className="sr-only">
+      {message}
+    </div>
+  )
+}
+
 function RootComponent() {
   return (
     <>
@@ -24,6 +64,7 @@ function RootComponent() {
           {site.skipLink}
         </a>
         <Header />
+        <RouteAnnouncer />
         <Outlet />
         <Footer />
       </div>

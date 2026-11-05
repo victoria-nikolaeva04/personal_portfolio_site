@@ -121,6 +121,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             <Link
               to="/projects/$slug"
               params={{ slug: project.slug }}
+              aria-label={`${projectsCopy.caseStudyLabel}: ${project.title}`}
               className="border-moss text-moss hover:bg-moss hover:text-paper rounded-full border-2 px-4 py-1.5 font-medium transition-colors"
             >
               {projectsCopy.caseStudyLabel}

@@ -3,6 +3,7 @@ import { Link, createFileRoute, notFound } from '@tanstack/react-router'
 import { BackLink } from '#/components/BackLink'
 import { Container } from '#/components/Container'
 import { mdxComponents } from '#/components/mdxComponents'
+import { useDocumentTitle } from '#/components/useDocumentTitle'
 import { loadNote } from '#/content/notes'
 import { site } from '#/content/site'
 
@@ -25,6 +26,7 @@ const ruledPaper = {
 function NotePage() {
   const { note, Body, next } = Route.useLoaderData()
   const { notesCopy } = site
+  useDocumentTitle(note.title)
 
   return (
     <main id="main" style={ruledPaper} className="bg-paper">

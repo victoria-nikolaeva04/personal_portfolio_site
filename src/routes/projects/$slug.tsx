@@ -2,6 +2,7 @@ import { MDXProvider } from '@mdx-js/react'
 import { Link, createFileRoute, notFound } from '@tanstack/react-router'
 import { Container } from '#/components/Container'
 import { mdxComponents } from '#/components/mdxComponents'
+import { useDocumentTitle } from '#/components/useDocumentTitle'
 import { loadCaseStudy } from '#/content/projects'
 import { site } from '#/content/site'
 
@@ -18,7 +19,7 @@ export const Route = createFileRoute('/projects/$slug')({
 })
 
 const pillLink =
-  'rounded-full border-2 border-plum px-6 py-3 font-medium text-plum'
+  'rounded-full border-2 border-plum px-6 py-3 font-medium text-plum max-sm:flex-1 max-sm:px-3 max-sm:text-center'
 
 function CaseStudyPage() {
   const { slug, study } = Route.useLoaderData()
@@ -30,6 +31,7 @@ function CaseStudyPage() {
   const meta = study?.meta
 
   const title = meta?.title ?? project?.title ?? ''
+  useDocumentTitle(title)
   const stack = meta?.stack ?? project?.stack ?? []
   const images = project?.images ?? []
   const links =
@@ -109,16 +111,18 @@ function CaseStudyPage() {
           </dl>
 
           {links.length > 0 && (
-            <ul className="mt-6 flex flex-wrap gap-3">
+            <ul className="mt-6 flex flex-wrap gap-3 max-sm:flex-col">
+              {/* On phones each link is a full-width, easy-to-tap button. */}
               {links.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-matcha-soft inline-block rounded-full px-4 py-1.5 font-medium"
+                    className="bg-matcha-soft inline-block rounded-full px-4 py-1.5 font-medium max-sm:block max-sm:py-2.5 max-sm:text-center"
                   >
-                    {link.label} ↗
+                    {link.label} <span aria-hidden="true">↗</span>
+                    <span className="sr-only"> (opens in a new tab)</span>
                   </a>
                 </li>
               ))}
@@ -163,7 +167,7 @@ function CaseStudyPage() {
           {previousSlug && nextSlug && (
             <nav
               aria-label="Project pages"
-              className="border-matcha mt-14 flex flex-wrap items-center justify-between gap-4 border-t-2 border-dashed pt-8 pb-8"
+              className="border-matcha mt-14 flex flex-wrap items-center justify-between gap-4 max-sm:flex-nowrap max-sm:gap-3 border-t-2 border-dashed pt-8 pb-8"
             >
               <Link
                 to="/projects/$slug"
@@ -175,7 +179,7 @@ function CaseStudyPage() {
               <Link
                 to="/projects/$slug"
                 params={{ slug: nextSlug }}
-                className="bg-plum text-cream rounded-full px-6 py-3 font-medium"
+                className="bg-plum text-cream rounded-full px-6 py-3 font-medium max-sm:flex-1 max-sm:px-3 max-sm:text-center"
               >
                 {caseStudyCopy.nextLabel}
               </Link>

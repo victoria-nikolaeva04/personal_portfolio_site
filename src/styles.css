@@ -107,6 +107,20 @@
   }
 }
 
+/* The visitor's pause button (see MotionToggle) sets this attribute on <html>. */
+html[data-motion-paused] .pollen,
+html[data-motion-paused] .typing-cursor {
+  animation: none;
+}
+
+html[data-motion-paused] .crawl {
+  animation-play-state: paused;
+}
+
+main:focus {
+  outline: none;
+}
+
 @keyframes pollen-drift {
   0% {
     transform: translate(0, 0) scale(0.6);

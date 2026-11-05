@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useMotionPaused } from '#/components/motion'
 import { Sprout } from '#/components/plants/Sprout'
 
 type TypingLineProps = {
@@ -20,7 +21,10 @@ function prefersReducedMotion() {
 }
 
 export function TypingLine({ lead, phrases, className }: TypingLineProps) {
-  const [reduced, setReduced] = useState(prefersReducedMotion)
+  const [systemReduced, setReduced] = useState(prefersReducedMotion)
+  // Either the OS setting or the visitor's pause button shows a still phrase.
+  const paused = useMotionPaused()
+  const reduced = systemReduced || paused
   const [index, setIndex] = useState(0)
   const [length, setLength] = useState(0)
   const [deleting, setDeleting] = useState(false)
