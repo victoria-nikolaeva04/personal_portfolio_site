@@ -172,8 +172,8 @@ export const site: SiteContent = {
   name: 'Victoria Nikolaeva',
   skipLink: 'Skip to content',
   notesCopy: {
-    note: "what I'm learning, as I learn it",
-    heading: 'Field notes',
+    note: "What's on my mind?",
+    heading: 'Notes',
     allLabel: 'All',
     emptyMessage: 'No notes with that tag yet',
     minutesSuffix: 'min read',
@@ -204,7 +204,7 @@ export const site: SiteContent = {
   },
   toolboxCopy: {
     heading: 'Skills',
-    note: "What's on the bench?",
+    note: "",
   },
   contactCopy: {
     note: 'Say Hello!',
@@ -215,10 +215,10 @@ export const site: SiteContent = {
   about: {
     label: 'Off the Clock',
     intro:
-      'Outside of the job, I am a bubbly energetic person with alot of love for my friends and family. I am a big fan anything artistic and try everyday to have a little whimsy in my life!',
+      'Outside of the job, I am a bubbly energetic person with a lot of love for my friends and family. I am a big fan of anything artistic and try everyday to have a little whimsy in my life!',
     hobbiesLabel: "When I'm not coding:",
     funFactLabel: 'Fun fact:',
-    notesHeading: 'Field notes',
+    notesHeading: 'Notes',
     notesLink: { label: 'All notes →', href: '#' },
   },
   projectsCopy: {
@@ -251,7 +251,7 @@ export const site: SiteContent = {
   },
   experience: {
     heading: 'Experience',
-    intro: 'The soil that nuture my knowledge',
+    intro: '',
     resumeLabel: 'Download resume (PDF)',
     resumeHref: '/Victoria_Nikolaeva_Resume_2026.pdf',
     educationLabel: 'Education',
@@ -390,7 +390,7 @@ export const site: SiteContent = {
       slug: 'tcgspot',
       title: 'TCGSpot',
       description:
-        'A trading card mobile app built with a cross-functional startup team. I designed and built the frontend and gathered requirements from 400+ potential users.',
+        'A free app for trading Pokémon cards with collectors near you. Browse a map of nearby trade offers, chat and meet up, and keep your collection in a binder with price averages and deal alerts. No fees, no cut, no middleman.',
       stack: ['Swift', 'SwiftUI', 'Figma'],
       thumbnail: '',
       thumbnailAlt: 'The TCGSpot team',
@@ -422,12 +422,10 @@ export const site: SiteContent = {
   hobbies: [
     { name: 'Sketching' },
     { name: 'Practicing Yoga' },
-    {
-      name: 'Taking Care of my Plants',
-    },
+    {name: 'Taking Care of my Plants'},
   ],
 
-  funFact: 'Whenever I need to focus, I like to wear a crown ',
+  funFact: 'I used to dance for 15 years!',
 
   toolbox: [
     {
@@ -437,6 +435,9 @@ export const site: SiteContent = {
         'TypeScript',
         'JavaScript',
         'Swift',
+        'Java',
+        'Kotlin',
+        'C++',
         'SQL',
         'HTML',
         'CSS',
@@ -463,12 +464,15 @@ export const site: SiteContent = {
         'Git',
         'GitHub',
         'VSCode',
+        'Xcode',
         'REST APIs',
         'PostgreSQL',
         'MySQL',
         'MongoDB',
         'Supabase',
+        'Claude AI',
         'OpenAI API',
+        'Gemini APIS',
         'Agile Methodology',
         'Scrum Methodology',
       ],
@@ -486,7 +490,6 @@ export const site: SiteContent = {
         'Project Management',
         'Communication',
         'Leadership',
-        'Mentoring',
         'Problem Solving',
         'Adaptability',
         'Time Management',

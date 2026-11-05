@@ -62,8 +62,8 @@ export function About({ notes }: { notes: Note[] }) {
               <span className="mt-0.5 shrink-0">
                 <Sprout size={28} />
               </span>
-              <p>
-                <span className="font-medium">{about.funFactLabel}</span>{' '}
+              <p className="font-hand text-2xl">
+                <span className="font-semibold">{about.funFactLabel}</span>{' '}
                 {funFact}
               </p>
             </div>
