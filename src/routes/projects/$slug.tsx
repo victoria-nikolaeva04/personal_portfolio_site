@@ -1,6 +1,5 @@
 import { MDXProvider } from '@mdx-js/react'
 import { Link, createFileRoute, notFound } from '@tanstack/react-router'
-import { areaBandClass } from '#/components/areaColors'
 import { Container } from '#/components/Container'
 import { mdxComponents } from '#/components/mdxComponents'
 import { loadCaseStudy } from '#/content/projects'
@@ -31,7 +30,6 @@ function CaseStudyPage() {
   const meta = study?.meta
 
   const title = meta?.title ?? project?.title ?? ''
-  const areas = meta?.areas ?? project?.areas ?? []
   const stack = meta?.stack ?? project?.stack ?? []
   const images = project?.images ?? []
   const links =
@@ -99,7 +97,7 @@ function CaseStudyPage() {
           </h1>
 
           <div
-            className={`${areaBandClass[areas[0] ?? 'build']} border-plum mt-8 flex h-[240px] items-center justify-center overflow-hidden rounded-[28px] border-2 p-6`}
+            className={`bg-matcha border-plum mt-8 flex h-[240px] items-center justify-center overflow-hidden rounded-[28px] border-2 p-6`}
           >
             {project?.thumbnail && (
               <img

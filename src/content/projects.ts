@@ -1,7 +1,4 @@
 import type { ComponentType } from 'react'
-import type { AreaId } from '#/content/site'
-
-export type CaseStudyStatus = 'shipped' | 'in-progress' | 'classwork'
 
 export type CaseStudyLink = {
   label: string
@@ -11,8 +8,6 @@ export type CaseStudyLink = {
 /** The `meta` object every src/content/projects/<slug>.mdx file exports. */
 export type ProjectMeta = {
   title: string
-  areas: AreaId[]
-  status: CaseStudyStatus
   role: string
   team: string
   dates: string

@@ -1,6 +1,5 @@
-import { Link, useSearch } from '@tanstack/react-router'
+import { Link } from '@tanstack/react-router'
 import { useState } from 'react'
-import { areaBandClass } from '#/components/areaColors'
 import { Container } from '#/components/Container'
 import { PottedPlant } from '#/components/plants/PottedPlant'
 import { site } from '#/content/site'
@@ -81,19 +80,16 @@ function IconLink({ href, label, unavailableLabel, children }: IconLinkProps) {
   )
 }
 
-const bandClasses = Object.values(areaBandClass)
+// Written out in full so Tailwind can see every class name.
+const bandClasses = ['bg-matcha', 'bg-plum', 'bg-marigold', 'bg-moss']
 
-// Cards with a screenshot use their area's color. Cards without one get a
-// random color, picked once when the card mounts so it stays put while you
-// scroll and hover.
-function pickBand(project: Project) {
-  if (project.thumbnail) return areaBandClass[project.areas[0]]
-  return bandClasses[Math.floor(Math.random() * bandClasses.length)]
-}
+// Picked once when the card mounts, so the color stays put while you scroll.
+const pickBand = () =>
+  bandClasses[Math.floor(Math.random() * bandClasses.length)]
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const { projectsCopy } = site
-  const [band] = useState(() => pickBand(project))
+  const [band] = useState(pickBand)
 
   return (
     <div className="bloom" style={{ animationDelay: `${index * 90}ms` }}>
@@ -153,10 +149,6 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
 export function Projects() {
   const { projectsCopy, projects } = site
-  const { area } = useSearch({ from: '/' })
-  const visible = area
-    ? projects.filter((project) => project.areas.includes(area))
-    : projects
 
   return (
     <section id="work" aria-labelledby="work-heading" className="py-20">
@@ -177,12 +169,9 @@ export function Projects() {
           />
         </div>
 
-        {visible.length > 0 ? (
-          <div
-            key={area ?? 'all'}
-            className="mt-10 grid grid-cols-[repeat(auto-fill,minmax(min(340px,100%),1fr))] gap-6"
-          >
-            {visible.map((project, index) => (
+        {projects.length > 0 ? (
+          <div className="mt-10 grid grid-cols-[repeat(auto-fill,minmax(min(340px,100%),1fr))] gap-6">
+            {projects.map((project, index) => (
               <ProjectCard key={project.slug} project={project} index={index} />
             ))}
           </div>

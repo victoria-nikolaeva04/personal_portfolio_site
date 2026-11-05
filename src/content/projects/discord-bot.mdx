@@ -1,12 +1,14 @@
 export const meta = {
   title: 'Discord Bot',
-  areas: ['build', 'lead'],
-  status: 'classwork',
   role: 'Project Manager',
   team: 'Team project',
   dates: '',
-  stack: ['TypeScript', 'MongoDB', 'Google API'],
+  stack: ['TypeScript', 'Node.js', 'discord.js', 'MongoDB', 'Google API'],
   links: [
+    {
+      label: 'View on GitHub',
+      href: 'https://github.com/CISC375/SageTeamX',
+    },
     {
       label: 'Sprint Report',
       href: 'https://drive.google.com/file/d/1FKcbw6JUaQNutz83RCUgfxMggAFFCEJk/view?usp=sharing',
@@ -14,17 +16,31 @@ export const meta = {
   ],
 }
 
-The Department Discord Bot Calendar Feature is an interactive bot command. It pulls Google Calendar events into a Discord message, so a community can see what is coming up without leaving the chat.
+The Department Discord Bot Calendar Feature is an interactive bot command. It pulls Google Calendar events into a Discord message, so a community can see what is coming up without leaving the chat. It was built as a new feature for Sage, the bot that runs the UD CIS Discord server.
 
 ## What it does
 
 - Pulls events from Google Calendar into a Discord message
 - Includes a filter system so people can narrow down which events they see
 
+### About Sage
+
+Sage is a purpose-built Discord bot that manages the UD CIS Discord server and encourages engagement and learning. It already offers things like self-assignable roles, question tagging, and private or anonymous questions. The calendar feature adds to that existing, long-running codebase.
+
 ## How it's built
 
-The bot is written in TypeScript. It uses the Google API to read calendar events and MongoDB to store data.
+### The bot
+
+The bot is written in TypeScript on Node.js and uses discord.js to talk to Discord. The calendar feature uses the Google API to read calendar events and MongoDB to store data.
+
+### The codebase
+
+Sage is organized into folders of commands (such as admin, general, info, and reminders), shared libraries, and "pieces" that run in the background, with one entry point that starts the bot. We worked inside this existing structure instead of starting from scratch.
+
+### Build and deployment
+
+The project is built with the TypeScript compiler and checked with ESLint. A Jenkins pipeline builds and lints every change, then deploys the main branch to the server, restarts the bot, and posts the result to a Discord webhook.
 
 ## My role
 
-I was the Project Manager. The team developed the feature following the Agile methodology, so I kept the work organized and moving.
+I was the Project Manager. The team developed the feature following the Agile methodology, so I kept the work organized and moving, and reported progress in our sprint report.

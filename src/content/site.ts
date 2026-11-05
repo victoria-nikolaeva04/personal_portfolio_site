@@ -1,13 +1,3 @@
-export type AreaId = 'build' | 'think' | 'design' | 'lead'
-
-export type Area = {
-  id: AreaId
-  name: string
-  subtitle: string
-  description: string
-  tools: string[]
-}
-
 export type Job = {
   role: string
   company: string
@@ -34,7 +24,6 @@ export type ProjectImage = {
 export type Project = {
   slug: string
   title: string
-  areas: AreaId[]
   description: string
   stack: string[]
   thumbnail: string
@@ -46,7 +35,6 @@ export type Project = {
 
 export type Hobby = {
   name: string
-  description: string
 }
 
 export type ToolboxGroup = {
@@ -171,7 +159,6 @@ export type SiteContent = {
   }
   sections: SectionHeadings
   statusLine: string
-  areas: Area[]
   jobs: Job[]
   education: Education[]
   projects: Project[]
@@ -290,41 +277,6 @@ export const site: SiteContent = {
   },
   statusLine: 'Open to Work, Nov. 2026',
 
-  areas: [
-    {
-      id: 'build',
-      name: 'Build',
-      subtitle: 'Apps from front to back',
-      description:
-        'I build front-end interfaces and full-stack apps, from mobile in SwiftUI to the web in React and TypeScript.',
-      tools: ['TypeScript', 'React', 'Swift/SwiftUI'],
-    },
-    {
-      id: 'think',
-      name: 'Think',
-      subtitle: 'AI and data',
-      description:
-        'I use large language models, APIs, and data analysis to turn product ideas into useful AI-assisted experiences.',
-      tools: ['OpenAI API', 'Python', 'Data Analysis'],
-    },
-    {
-      id: 'design',
-      name: 'Design',
-      subtitle: 'People-first interfaces',
-      description:
-        'I design with real users in mind, using wireframes, prototypes, and accessible, user-friendly interfaces.',
-      tools: ['Figma', 'Framer', 'Wireframing'],
-    },
-    {
-      id: 'lead',
-      name: 'Lead',
-      subtitle: 'Teams and teaching',
-      description:
-        'I have managed teams on Agile projects and supported 100+ students per semester as a teaching assistant.',
-      tools: ['Agile Development', 'Team Management', 'Teaching'],
-    },
-  ],
-
   jobs: [
     {
       role: 'Frontend Engineer',
@@ -400,7 +352,6 @@ export const site: SiteContent = {
     {
       slug: 'arcana-noctis',
       title: 'Arcana Noctis',
-      areas: ['build'],
       description:
         'A tarot reading site built around the 78-card Rider-Waite-Smith deck, with daily readings, a card guide, and an AI Oracle that weaves your cards into one story.',
       stack: [
@@ -419,7 +370,6 @@ export const site: SiteContent = {
     {
       slug: 'soundmate',
       title: 'SoundMate',
-      areas: ['think', 'design'],
       description:
         'A full-stack social music-matching platform that calculates listener compatibility from Spotify profile data, with friend connections and event creation and joining.',
       stack: [
@@ -439,7 +389,6 @@ export const site: SiteContent = {
     {
       slug: 'tcgspot',
       title: 'TCGSpot',
-      areas: ['lead'],
       description:
         'A trading card mobile app built with a cross-functional startup team. I designed and built the frontend and gathered requirements from 400+ potential users.',
       stack: ['Swift', 'SwiftUI', 'Figma'],
@@ -450,17 +399,16 @@ export const site: SiteContent = {
     {
       slug: 'discord-bot',
       title: 'Discord Bot',
-      areas: ['build', 'lead'],
       description:
         'An interactive Discord bot command that pulls Google Calendar events into a Discord message, with a filter system. Built with Agile methods.',
-      stack: ['TypeScript', 'MongoDB', 'Google API'],
+      stack: ['TypeScript', 'Node.js', 'discord.js', 'MongoDB', 'Google API'],
       thumbnail: '',
       thumbnailAlt: 'Screenshot of the Discord Bot',
+      github: 'https://github.com/CISC375/SageTeamX',
     },
     {
       slug: 'ai-career-quiz',
       title: 'AI Career Quiz',
-      areas: ['build'],
       description:
         'An interactive career suggestion platform that generates AI-driven reports on industries, average salaries, and job positions, built with Agile methods.',
       stack: ['TypeScript', 'React', 'React Native', 'OpenAI API', 'HTML/CSS'],
@@ -472,11 +420,10 @@ export const site: SiteContent = {
   ],
 
   hobbies: [
-    { name: 'Sketching', description: 'Doodling in a sketchbook to unwind.' },
-    { name: 'Practicing Yoga', description: 'A slow reset for body and mind.' },
+    { name: 'Sketching' },
+    { name: 'Practicing Yoga' },
     {
       name: 'Taking Care of my Plants',
-      description: 'Watering, pruning, and chatting with my greenery.',
     },
   ],
 

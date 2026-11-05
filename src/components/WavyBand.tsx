@@ -1,7 +1,4 @@
-import type { ReactNode } from 'react'
-
 type WavyBandProps = {
-  children?: ReactNode
   className?: string
 }
 
@@ -69,13 +66,12 @@ function BottomWave() {
   )
 }
 
-export function WavyBand({ children, className = '' }: WavyBandProps) {
+export function WavyBand({ className = '' }: WavyBandProps) {
   return (
     <div
       className={`bg-matcha-soft relative my-[var(--wave-h)] [--wave-h:clamp(56px,6vw,112px)] ${className}`.trim()}
     >
       <TopWave />
-      {children}
       <BottomWave />
     </div>
   )

@@ -3,7 +3,7 @@ import { PottedPlant } from '#/components/plants/PottedPlant'
 import type { PottedPlantVariant } from '#/components/plants/PottedPlant'
 import { site } from '#/content/site'
 
-function Bracket({ className = '' }: { className?: string }) {
+/* function Bracket({ className = '' }: { className?: string }) {
   return (
     <svg
       width="28"
@@ -16,7 +16,7 @@ function Bracket({ className = '' }: { className?: string }) {
       <path d="M0 0H28V8L8 28H0Z" className="fill-plum" />
     </svg>
   )
-}
+} */
 
 const plantVariants: PottedPlantVariant[] = [
   'leafy',

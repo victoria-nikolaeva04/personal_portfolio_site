@@ -1,4 +1,5 @@
-import { createElement, type ComponentType } from 'react'
+import { createElement } from 'react'
+import type { ComponentType } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 
 /** The `meta` object every src/content/notes/<slug>.mdx file exports. */
@@ -63,6 +64,6 @@ export async function loadNote(slug: string) {
   return {
     note: notes[index],
     Body: mod.default,
-    next: notes[index + 1],
+    next: notes.at(index + 1),
   }
 }
