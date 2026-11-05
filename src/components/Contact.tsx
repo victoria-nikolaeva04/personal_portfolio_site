@@ -27,89 +27,96 @@ function WateringCanScene() {
       aria-hidden="true"
       focusable="false"
     >
-      <g className="group-hover:tip" style={{ transformOrigin: '200px 110px' }}>
-        <path
-          d="M165 62C165 25 235 25 235 62"
-          fill="none"
-          stroke="#A7B97A"
-          strokeWidth="10"
-          strokeLinecap="round"
-        />
-        <path
-          d="M258 82C305 82 305 136 256 136"
-          fill="none"
-          stroke="#A7B97A"
-          strokeWidth="10"
-          strokeLinecap="round"
-        />
-        <path
-          d="M142 122L76 138"
-          stroke="#A7B97A"
-          strokeWidth="14"
-          strokeLinecap="butt"
-        />
-        <ellipse
-          cx="68"
-          cy="139"
-          rx="7"
-          ry="17"
-          transform="rotate(-14 68 139)"
-          fill="#4F5E2E"
-        />
-        <rect x="140" y="62" width="120" height="92" rx="18" fill="#A7B97A" />
-        <path
-          d="M140 108H260"
-          stroke="#4F5E2E"
-          strokeWidth="4"
-          strokeOpacity="0.6"
-        />
-        <rect
-          x="152"
-          y="76"
-          width="10"
-          height="64"
-          rx="5"
-          fill="#E6EDD3"
-          fillOpacity="0.6"
-        />
-      </g>
+      {/* The can and its drops sit closer to the plant. */}
+      <g transform="translate(-24 0)">
+        {/* Touch screens can't hover, so on mobile the can rests mid-pour. */}
+        <g
+          className="group-hover:tip max-sm:[transform:rotate(-18deg)]"
+          style={{ transformOrigin: '200px 110px' }}
+        >
+          <path
+            d="M165 62C165 25 235 25 235 62"
+            fill="none"
+            stroke="#A7B97A"
+            strokeWidth="10"
+            strokeLinecap="round"
+          />
+          <path
+            d="M258 82C305 82 305 136 256 136"
+            fill="none"
+            stroke="#A7B97A"
+            strokeWidth="10"
+            strokeLinecap="round"
+          />
+          <path
+            d="M142 122L76 138"
+            stroke="#A7B97A"
+            strokeWidth="14"
+            strokeLinecap="butt"
+          />
+          <ellipse
+            cx="68"
+            cy="139"
+            rx="7"
+            ry="17"
+            transform="rotate(-14 68 139)"
+            fill="#4F5E2E"
+          />
+          <rect x="140" y="62" width="120" height="92" rx="18" fill="#A7B97A" />
+          <path
+            d="M140 108H260"
+            stroke="#4F5E2E"
+            strokeWidth="4"
+            strokeOpacity="0.6"
+          />
+          <rect
+            x="152"
+            y="76"
+            width="10"
+            height="64"
+            rx="5"
+            fill="#E6EDD3"
+            fillOpacity="0.6"
+          />
+        </g>
 
-      <g fill="#E6EDD3">
-        <circle
-          cx="84"
-          cy="182"
-          r="4"
-          className="group-hover:drip opacity-0"
-          style={{ animationDelay: '0s' }}
-        />
-        <circle
-          cx="78"
-          cy="182"
-          r="3.5"
-          className="group-hover:drip opacity-0"
-          style={{ animationDelay: '0.07s' }}
-        />
-        <circle
-          cx="86"
-          cy="182"
-          r="4.5"
-          className="group-hover:drip opacity-0"
-          style={{ animationDelay: '0.14s' }}
-        />
-        <circle
-          cx="74"
-          cy="182"
-          r="3"
-          className="group-hover:drip opacity-0"
-          style={{ animationDelay: '0.21s' }}
-        />
-        <circle
-          cx="81"
-          cy="182"
-          r="4"
-          className="group-hover:drip opacity-0"
-          style={{ animationDelay: '0.28s' }}
-        />
+        <g fill="#E6EDD3">
+          <circle
+            cx="84"
+            cy="182"
+            r="4"
+            className="group-hover:drip opacity-0 max-sm:[transform:translateY(8px)] max-sm:opacity-90"
+            style={{ animationDelay: '0s' }}
+          />
+          <circle
+            cx="78"
+            cy="182"
+            r="3.5"
+            className="group-hover:drip opacity-0 max-sm:[transform:translateY(26px)] max-sm:opacity-70"
+            style={{ animationDelay: '0.07s' }}
+          />
+          <circle
+            cx="86"
+            cy="182"
+            r="4.5"
+            className="group-hover:drip opacity-0 max-sm:[transform:translateY(44px)] max-sm:opacity-50"
+            style={{ animationDelay: '0.14s' }}
+          />
+          <circle
+            cx="74"
+            cy="182"
+            r="3"
+            className="group-hover:drip opacity-0 max-sm:[transform:translateY(16px)] max-sm:opacity-80"
+            style={{ animationDelay: '0.21s' }}
+          />
+          <circle
+            cx="81"
+            cy="182"
+            r="4"
+            className="group-hover:drip opacity-0 max-sm:[transform:translateY(36px)] max-sm:opacity-60"
+            style={{ animationDelay: '0.28s' }}
+          />
+        </g>
       </g>
 
       <g className="grow-scroll">
@@ -137,7 +144,7 @@ function WateringCanScene() {
 }
 
 const buttonBase =
-  'lift rounded-full px-6 py-3 font-medium focus-visible:outline-matcha'
+  'lift rounded-full px-6 py-3 font-medium focus-visible:outline-matcha max-sm:flex-1 max-sm:px-2 max-sm:text-center max-sm:text-sm max-sm:whitespace-nowrap'
 
 export function Contact() {
   const { contactCopy, contact } = site
@@ -160,7 +167,7 @@ export function Contact() {
             <p className="text-matcha-soft mt-4 max-w-[52ch] text-lg">
               {contactCopy.roles}
             </p>
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="mt-8 flex flex-wrap gap-4 max-sm:flex-nowrap max-sm:justify-between max-sm:gap-2">
               {contact.map((link) => {
                 const isEmail = link.href.startsWith('mailto:')
                 return (
@@ -172,7 +179,7 @@ export function Contact() {
                       : { target: '_blank', rel: 'noopener noreferrer' })}
                     className={`${buttonBase} ${
                       isEmail
-                        ? 'bg-marigold text-plum'
+                        ? 'bg-marigold text-plum max-sm:flex-[1.5]'
                         : 'border-matcha text-cream border-2'
                     }`}
                   >
