@@ -94,14 +94,15 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
     <div className="bloom" style={{ animationDelay: `${index * 90}ms` }}>
       <article className="bg-paper border-plum flex h-full flex-col overflow-hidden rounded-[28px] border-2">
+        {/* With an image, it fills the header; only a thin sliver of color shows on top. */}
         <div
-          className={`${band} relative flex h-[200px] items-center justify-center p-5`}
+          className={`${band} ${project.thumbnail ? 'h-[300px] pt-1.5' : 'h-[40px]'}`}
         >
           {project.thumbnail && (
             <img
               src={project.thumbnail}
               alt={project.thumbnailAlt}
-              className="h-full w-full rounded-lg object-cover object-top"
+              className="h-full w-full object-cover object-top"
             />
           )}
         </div>

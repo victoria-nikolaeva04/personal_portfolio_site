@@ -92,21 +92,10 @@ function CaseStudyPage() {
               <path d="m12 19-7-7 7-7" />
             </svg>
           </Link>
+          <div aria-hidden="true" className="bg-matcha mb-5 h-3 rounded-full" />
           <h1 className="font-display text-[clamp(40px,5.5vw,64px)] leading-[1.05] font-semibold">
             {title}
           </h1>
-
-          <div
-            className={`bg-matcha border-plum mt-8 flex h-[240px] items-center justify-center overflow-hidden rounded-[28px] border-2 p-6`}
-          >
-            {project?.thumbnail && (
-              <img
-                src={project.thumbnail}
-                alt={project.thumbnailAlt}
-                className="h-full w-full rounded-lg object-cover object-top"
-              />
-            )}
-          </div>
 
           <dl className="border-matcha mt-8 grid grid-cols-1 gap-x-6 gap-y-5 border-y-2 border-dashed py-6 sm:grid-cols-2">
             {details.map((detail) => (
