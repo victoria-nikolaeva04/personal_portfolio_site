@@ -1,6 +1,4 @@
-import { createElement } from 'react'
 import type { ComponentType } from 'react'
-import { renderToStaticMarkup } from 'react-dom/server'
 
 /** The `meta` object every src/content/notes/<slug>.mdx file exports. */
 export type NoteMeta = {
@@ -18,21 +16,12 @@ export type Note = NoteMeta & {
 type NoteModule = {
   default: ComponentType
   meta: NoteMeta
+  /** Added at build time by the note-reading-time plugin in vite.config.ts. */
+  readingMinutes: number
 }
-
-const WORDS_PER_MINUTE = 200
 
 const modules = import.meta.glob<NoteModule>('./notes/*.mdx')
 const slugOf = (path: string) => path.replace(/^.*\/(.+)\.mdx$/, '$1')
-
-function readingMinutes(Body: ComponentType) {
-  const html = renderToStaticMarkup(createElement(Body))
-  const text = html
-    .replace(/<pre[\s\S]*?<\/pre>/g, ' ')
-    .replace(/<[^>]+>/g, ' ')
-  const words = text.split(/\s+/).filter(Boolean).length
-  return Math.max(1, Math.round(words / WORDS_PER_MINUTE))
-}
 
 const loaders = new Map(
   Object.entries(modules).map(([path, load]) => [slugOf(path), load]),
@@ -48,7 +37,7 @@ export function loadNotes(): Promise<Note[]> {
       return {
         ...mod.meta,
         slug: slugOf(path),
-        readingMinutes: readingMinutes(mod.default),
+        readingMinutes: mod.readingMinutes,
       }
     }),
   ).then((notes) => notes.sort((a, b) => b.date.localeCompare(a.date)))
