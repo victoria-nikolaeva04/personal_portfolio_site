@@ -8,7 +8,7 @@ function GreenhouseWindow() {
     <svg
       viewBox="0 0 800 640"
       preserveAspectRatio="xMidYMax meet"
-      className="pointer-events-none absolute inset-x-0 bottom-0 mx-auto h-full w-full max-w-[900px]"
+      className="pointer-events-none absolute inset-x-0 bottom-0 mx-auto h-full w-full max-w-[900px] max-sm:inset-x-auto max-sm:left-1/2 max-sm:w-[190%] max-sm:max-w-none max-sm:-translate-x-1/2"
       aria-hidden="true"
       focusable="false"
     >
