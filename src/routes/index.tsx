@@ -19,7 +19,6 @@ function Home() {
     <>
       <main id="main">
         <Hero />
-        {/* <Section id="work-areas" heading={site.sections.workAreas} /> */}
         <Experience />
         <Projects />
         <Toolbox />

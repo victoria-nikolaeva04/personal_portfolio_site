@@ -3,21 +3,6 @@ import { PottedPlant } from '#/components/plants/PottedPlant'
 import type { PottedPlantVariant } from '#/components/plants/PottedPlant'
 import { site } from '#/content/site'
 
-/* function Bracket({ className = '' }: { className?: string }) {
-  return (
-    <svg
-      width="28"
-      height="28"
-      viewBox="0 0 28 28"
-      className={`absolute top-full hidden lg:block ${className}`.trim()}
-      aria-hidden="true"
-      focusable="false"
-    >
-      <path d="M0 0H28V8L8 28H0Z" className="fill-plum" />
-    </svg>
-  )
-} */
-
 const plantVariants: PottedPlantVariant[] = [
   'leafy',
   'snake',
@@ -69,11 +54,6 @@ export function Toolbox() {
               </div>
             ))}
           </div>
-
-          {/* <div className="bg-plum relative hidden h-[6px] w-full rounded-full lg:block">
-            <Bracket className="left-[10%]" />
-            <Bracket className="right-[10%] -scale-x-100" />
-          </div> */}
         </div>
       </Container>
     </section>
