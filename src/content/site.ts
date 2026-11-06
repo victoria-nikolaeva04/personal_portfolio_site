@@ -472,7 +472,7 @@ export const site: SiteContent = {
         'Supabase',
         'Claude AI',
         'OpenAI API',
-        'Gemini APIS',
+        'Gemini APIs',
         'Agile Methodology',
         'Scrum Methodology',
       ],
