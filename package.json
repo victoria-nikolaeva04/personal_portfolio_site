@@ -1,5 +1,7 @@
 {
   "name": "my-portfolio",
+  "description": "Victoria Nikolaeva's personal portfolio site",
+  "author": "Victoria Nikolaeva",
   "private": true,
   "type": "module",
   "imports": {
