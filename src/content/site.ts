@@ -24,6 +24,8 @@ export type ProjectImage = {
 export type Project = {
   slug: string
   title: string
+  /** Optional note shown on its own line under the title, e.g. "Coming Soon". */
+  status?: string
   description: string
   stack: string[]
   thumbnail: string
@@ -349,6 +351,17 @@ export const site: SiteContent = {
   ],
 
   projects: [
+    {
+      slug: 'habit-calendar',
+      title: 'Habit Calendar',
+      status: 'Coming Soon',
+      description:
+        'An upcoming project for building habits one day at a time. More details to come!',
+      stack: [],
+      thumbnail: '',
+      thumbnailAlt: 'The Habit Calendar project',
+      github: 'https://github.com/victoria-nikolaeva04/habit_calendar',
+    },
     {
       slug: 'arcana-noctis',
       title: 'Arcana Noctis',

@@ -1,5 +1,4 @@
 import { Link } from '@tanstack/react-router'
-import { useState } from 'react'
 import { Container } from '#/components/Container'
 import { PottedPlant } from '#/components/plants/PottedPlant'
 import { site } from '#/content/site'
@@ -80,16 +79,13 @@ function IconLink({ href, label, unavailableLabel, children }: IconLinkProps) {
   )
 }
 
-// Written out in full so Tailwind can see every class name.
-const bandClasses = ['bg-matcha', 'bg-plum', 'bg-marigold', 'bg-moss']
-
-// Picked once when the card mounts, so the color stays put while you scroll.
-const pickBand = () =>
-  bandClasses[Math.floor(Math.random() * bandClasses.length)]
+// Gold, green, dark green, red. Written out in full so Tailwind can see every
+// class name. The cycle repeats if there are more cards than colors.
+const bandClasses = ['bg-marigold', 'bg-matcha', 'bg-moss', 'bg-plum']
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const { projectsCopy } = site
-  const [band] = useState(pickBand)
+  const band = bandClasses[index % bandClasses.length]
 
   return (
     <div className="bloom" style={{ animationDelay: `${index * 90}ms` }}>
@@ -109,6 +105,11 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         <div className="flex flex-1 flex-col gap-3 p-6">
           <h3 className="font-display text-2xl leading-tight font-semibold">
             {project.title}
+            {project.status && (
+              <span className="text-plum-soft block text-base font-medium">
+                {project.status}
+              </span>
+            )}
           </h3>
           <p>{project.description}</p>
           {project.stack.length > 0 && (
